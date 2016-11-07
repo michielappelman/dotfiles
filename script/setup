@@ -44,4 +44,4 @@ done
 
 # Configure (Neo)Vi(m)
 VIMDIR="$HOME/.vim"
-ln -s "$VIMDIR/init.vim" "$HOME/.vimrc"
+ln -sfv "$VIMDIR/init.vim" "$HOME/.vimrc"
