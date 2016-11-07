@@ -1,0 +1,11 @@
+[user]
+	email = michiel@appelman.se
+	name = Michiel Appelman
+[shell]
+	username = mike
+[github]
+	user = michielappelman
+[push]
+	default = simple
+[core]
+    excludesfile = ~/.gitignore
