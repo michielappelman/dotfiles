@@ -1,10 +1,11 @@
 #!/bin/sh
 # Install all dotfiles into the home directory
-# From: https://github.com/MikeMcQuaid/dotfiles/blob/master/script/setup
+# Based on: https://github.com/MikeMcQuaid/dotfiles/blob/master/script/setup
 
 DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
+git submodule init && git submodule update
 
 [ $(uname -s) = "Darwin" ] && export OSX=1 && export UNIX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
@@ -40,3 +41,7 @@ for DOTFILE in *; do
     cp -rv "$DIRFILE" "$HOMEFILE"
   fi
 done
+
+# Configure (Neo)Vi(m)
+VIMDIR="$HOME/.vim"
+ln -s "$VIMDIR/init.vim" "$HOME/.vimrc"
