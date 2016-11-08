@@ -45,3 +45,5 @@ done
 # Configure (Neo)Vi(m)
 VIMDIR="$HOME/.vim"
 ln -sfv "$VIMDIR/init.vim" "$HOME/.vimrc"
+vim +PluginInstall +qall
+
