@@ -42,6 +42,7 @@ fi
 if quiet_which nvim
 then
   export EDITOR="nvim"
+  alias vi="nvim"
 elif quiet_which subl || quiet_which sublime_text
 then
   quiet_which subl && export EDITOR="subl"
