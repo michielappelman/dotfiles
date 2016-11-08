@@ -96,5 +96,18 @@ endif
 
 let g:airline_powerline_fonts = 1
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "💥"
+let g:syntastic_style_error_symbol = "💥"
+let g:syntastic_warning_symbol = "❗"
+let g:syntastic_style_warning_symbol = "❗"
+let g:syntastic_enable_balloons = 1
+let g:syntastic_loc_list_height = 5
+highlight SyntasticErrorSign guifg=white guibg=red
+highlight SyntasticWarningSign guifg=white guibg=red
+
 " Disable auto-folding in Markdown
 let g:vim_markdown_folding_disabled=1
