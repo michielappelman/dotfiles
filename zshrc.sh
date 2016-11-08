@@ -53,3 +53,8 @@ RPS1='$(vi_mode_prompt_info) ${return_code}'
 if $(which archey >/dev/null 2>&1); then
     archey -c
 fi
+
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi

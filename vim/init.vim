@@ -1,5 +1,5 @@
 " NeoVim specific options:
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Start - Vundle
 set nocompatible
@@ -9,8 +9,14 @@ call vundle#begin('~/.config/nvim/bundle')
 " Start - Vundle plugins
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'mhinz/vim-signify'
+Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-syntastic/syntastic'
 " End - Vundle plugins
 call vundle#end()
 filetype plugin indent on
@@ -87,6 +93,8 @@ if exists('+colorcolumn')
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
+
+let g:airline_powerline_fonts = 1
 
 " Disable auto-folding in Markdown
 let g:vim_markdown_folding_disabled=1
