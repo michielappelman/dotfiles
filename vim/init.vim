@@ -5,7 +5,7 @@ set clipboard=unnamedplus
 set nocompatible
 filetype off
 set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
+call vundle#begin('~/.vim/bundle')
 " Start - Vundle plugins
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
