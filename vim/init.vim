@@ -4,7 +4,7 @@ set clipboard=unnamedplus
 " Start - Vundle
 set nocompatible
 filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle')
 " Start - Vundle plugins
 Plugin 'VundleVim/Vundle.vim'
