@@ -34,7 +34,10 @@ map <Leader> <Plug>(easymotion-prefix)
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
-
+"
+" Quickly open/reload vim
+nnoremap <leader>ev :tabe $MYVIMRC<CR>  
+nnoremap <leader>sv :source $MYVIMRC<CR>   
 
 " ======= Function Key remaps ========
 map <F2> :NERDTreeToggle<CR>
@@ -46,16 +49,13 @@ map <F7> :set invpaste<CR>
 set pastetoggle=<F7>
 
 " ======= Window / Tab Movement ========
-" Map comma and dot to prev, next tab
-nmap <C-l> :tabn <CR>
-nmap <C-h> :tabp <CR>
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 
-" Easy window navigation
-map <Leader>h <C-w>h
-map <Leader>j <C-w>j
-map <Leader>k <C-w>k
-map <Leader>l <C-w>l
-
+nmap <Leader>, :tabp <CR>
+nmap <Leader>. :tabn <CR>
 
 " ======= Settings for vim ========
 " Allow unsaved buffers to lose focus
