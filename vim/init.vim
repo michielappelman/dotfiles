@@ -41,6 +41,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " ======= Function Key remaps ========
 map <F2> :NERDTreeToggle<CR>
+map <F3> :Errors<CR>
 " F6 to toggle paste mode
 map <F6> :set invnumber<CR>
 set pastetoggle=<F6>
@@ -115,16 +116,20 @@ endif
 
 let g:airline_powerline_fonts = 1
 
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "💥"
-let g:syntastic_style_error_symbol = "💥"
-let g:syntastic_warning_symbol = "❗"
-let g:syntastic_style_warning_symbol = "❗"
 let g:syntastic_enable_balloons = 1
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_error_symbol = "💥"
 let g:syntastic_loc_list_height = 5
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_style_warning_symbol = '💩'
+let g:syntastic_warning_symbol = '⚠️'
+highlight SyntasticErrorLine guifg=white guibg=red
+highlight SyntasticWarningLine guifg=white guibg=red
 highlight SyntasticErrorSign guifg=white guibg=red
 highlight SyntasticWarningSign guifg=white guibg=red
 
