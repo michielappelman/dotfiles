@@ -16,7 +16,7 @@ then
   export FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
 
-plugins=(git docker dirhistory dirpersist mosh pep8 rsync python tmux sudo osx vi-mode)
+plugins=(git docker dirhistory mosh pep8 rsync python tmux sudo osx vagrant pylint pip history httpie git-extras django)
 source $ZSH/oh-my-zsh.sh
 source ~/.zprofile
 
