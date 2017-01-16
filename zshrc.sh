@@ -51,7 +51,7 @@ RPS1='$(vi_mode_prompt_info) ${return_code}'
 
 # Run archey if available:
 if $(which archey >/dev/null 2>&1); then
-    archey -c
+    archey -c -o
 fi
 
 if which pyenv > /dev/null; then

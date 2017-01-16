@@ -19,6 +19,7 @@ alias sag="ssh-agent -a $SSH_AUTH_SOCK > /dev/null && ssh-add ~/.ssh/id_rsa"
 # FROM http://cfenollosa.com/misc/tricks.txt
 function remove_lines_from() { grep -F -x -v -f $2 $1; }
 function gpip() { PIP_REQUIRE_VIRTUALENV="" pip "$@" }
+function gpip3() { PIP_REQUIRE_VIRTUALENV="" pip3 "$@" }
 
 # Create a new Python virtual env
 function pynew() {

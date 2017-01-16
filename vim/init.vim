@@ -10,13 +10,19 @@ call vundle#begin('~/.vim/bundle')
 " Start - Vundle plugins
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'ervandew/supertab'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'mhinz/vim-signify'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'mitsuhiko/vim-jinja'
+Plugin 'pearofducks/ansible-vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
@@ -68,7 +74,7 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 " Syntax HLing
-syntax on
+syntax enable
 " Show matching brackets when text indicator is over them
 set showmatch
 " Tab completion
@@ -106,9 +112,8 @@ set si "Smart indent
 
 set laststatus=2
 
-
 if exists('+colorcolumn')
-  set colorcolumn=80
+  set colorcolumn=100
   highlight ColorColumn ctermbg=1
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
