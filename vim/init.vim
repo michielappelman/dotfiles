@@ -15,6 +15,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'ervandew/supertab'
 Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'jpalardy/vim-slime'
 Plugin 'mhinz/vim-signify'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mitsuhiko/vim-jinja'
@@ -26,7 +27,7 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 " End - Vundle plugins
 call vundle#end()
 filetype plugin indent on
@@ -64,7 +65,38 @@ nmap <C-l> <C-w>l
 nmap <Leader>, :tabp <CR>
 nmap <Leader>. :tabn <CR>
 
-" ======= Settings for vim ========
+" ======= Extension Settings ========
+let g:airline_powerline_fonts = 1
+let g:airline_mode_map = {
+  \ '__' : '-',
+  \ 'n'  : 'N',
+  \ 'i'  : 'I',
+  \ 'R'  : 'R',
+  \ 'c'  : 'C',
+  \ 'v'  : 'V',
+  \ 'V'  : 'V',
+  \ '' : 'V',
+  \ 's'  : 'S',
+  \ 'S'  : 'S',
+  \ '' : 'S',
+  \ }
+let g:airline_extensions = ['hunks', 'branch', 'ale', 'virtualenv', 'whitespace', 'wordcount']
+let g:airline#extensions#branch#displayed_head_limit = 10
+let g:airline_section_z = '%2c:%l/%L'
+let g:airline#extensions#default#section_truncate_width = {
+  \ 'b': 90,
+  \ 'y': 120,
+  \ }
+
+let g:slime_default_config = {"sessionname": "repl", "windowname": "0"}
+let g:slime_dont_ask_default = 1
+
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" Disable auto-folding in Markdown
+let g:vim_markdown_folding_disabled=1
+
+" ======= General Settings ========
 " Allow unsaved buffers to lose focus
 set hidden
 " Line numbers
@@ -119,26 +151,5 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-let g:airline_powerline_fonts = 1
-
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_balloons = 1
-let g:syntastic_enable_highlighting = 1
-let g:syntastic_error_symbol = "💥"
-let g:syntastic_loc_list_height = 5
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_style_warning_symbol = '💩'
-let g:syntastic_warning_symbol = '⚠️'
-highlight SyntasticErrorLine guifg=white guibg=red
-highlight SyntasticWarningLine guifg=white guibg=red
-highlight SyntasticErrorSign guifg=white guibg=red
-highlight SyntasticWarningSign guifg=white guibg=red
-
-" Disable auto-folding in Markdown
-let g:vim_markdown_folding_disabled=1
-
+autocmd FileType python nnoremap <Leader>= :0,$!yapf<CR>
 
