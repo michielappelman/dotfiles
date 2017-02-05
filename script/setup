@@ -43,7 +43,6 @@ for DOTFILE in *; do
 done
 
 # Configure (Neo)Vi(m)
-VIMDIR="$HOME/.vim"
+VIMDIR="$HOME/.config/nvim"
 ln -sfv "$VIMDIR/init.vim" "$HOME/.vimrc"
 which nvim && nvim +PluginInstall +qall
-
