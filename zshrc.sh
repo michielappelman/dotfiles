@@ -42,8 +42,13 @@ function sh_char {
     [[ $(id -u) -eq 0 ]] && echo "%{$fg[red]%}#%{$reset_color%}" && return
     echo "%{$fg[cyan]%}$%{$reset_color%}"
 }
-function flag {
+function error_flag {
     [[ $? -ne 0 ]] && echo "%{%F{red}%}\u2718 "
+}
+function pyenv_str {
+    if $(pyenv local >/dev/null 2>&1) ; then
+        echo "@ %F{magenta}$(pyenv version | cut -f 1 -d ' ')%f "
+    fi
 }
 
 MODE_INDICATOR="$FX[bold]$FG[020]<$FX[no_bold]%{$fg[blue]%}<<%{$reset_color%}"
@@ -53,7 +58,7 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ✗"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%} ?"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green] ✔"
 
-PROMPT='$(flag)$(user) %B»%b %3~ $(git_prompt_info)%{$reset_color%}
+PROMPT='$(error_flag)$(user) %B»%b %3~ $(git_prompt_info)%{$reset_color%} $(pyenv_str)
 $(sh_char) '
 RPS1='%{$fg[magenta]%}%*%{$reset_color%}'
 
@@ -63,6 +68,7 @@ if $(which archey >/dev/null 2>&1); then
 fi
 
 if which pyenv > /dev/null; then
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
