@@ -33,21 +33,29 @@ bindkey '^[[B' down-line-or-search
 bindkey '\e.' insert-last-word
 
 # Prompt Styling
-local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 function user {
     [[ $(id -u) -eq 0 ]] && echo "%{$fg[red]%}%n%{$reset_color%}" && return
-    echo "%{$fg[cyan]%}%n%{$reset_color%}"
+    echo "%{$fg[green]%}%n%{$reset_color%}"
+}
+function sh_char {
+    [[ $(id -u) -eq 0 ]] && echo "%{$fg[red]%}#%{$reset_color%}" && return
+    echo "%{$fg[cyan]%}$%{$reset_color%}"
+}
+function flag {
+    [[ $? -ne 0 ]] && echo "%{%F{red}%}\u2718 "
 }
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
-ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" ✗"
-ZSH_THEME_GIT_PROMPT_CLEAN=" ✔"
 MODE_INDICATOR="$FX[bold]$FG[020]<$FX[no_bold]%{$fg[blue]%}<<%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="on %{$fg[yellow]%}\uE0A0 "
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ✗"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%} ?"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green] ✔"
 
-PROMPT='$(user).%{$fg[green]%}%m%{$reset_color%} %2~ $(git_prompt_info)%{$reset_color%}%B»%b '
-RPS1='$(vi_mode_prompt_info) ${return_code}'
+PROMPT='$(flag)$(user) %B»%b %3~ $(git_prompt_info)%{$reset_color%}
+$(sh_char) '
+RPS1='%{$fg[magenta]%}%*%{$reset_color%}'
 
 # Run archey if available:
 if $(which archey >/dev/null 2>&1); then
