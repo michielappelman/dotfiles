@@ -65,6 +65,8 @@ nmap <C-l> <C-w>l
 nmap <Leader>, :tabp <CR>
 nmap <Leader>. :tabn <CR>
 
+set mouse=a
+
 " ======= Extension Settings ========
 let g:airline_powerline_fonts = 1
 let g:airline_mode_map = {
@@ -151,5 +153,15 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
+
+" Python Settings
+" ---------------
+
+" Space, = does a Python format of the complete file.
 autocmd FileType python nnoremap <Leader>= :0,$!yapf<CR>
+
+" Set virtualenv for Neovim if it exists.
+if filereadable('~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python')
+    let g:python3_host_prog = '~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python'
+endif
 
