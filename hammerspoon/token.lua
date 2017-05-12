@@ -15,12 +15,12 @@ function getPIN()
 end
 
 function getToken()
-    t = hs.task.new('/Applications/SofToken II.app/Contents/Resources/st-wrap.sh', pasteToken, {'-p'})
     pin = getPIN()
     if not pin then
         hs.notify.new({title="Hammerspoon", informativeText="No PIN file found!"}):send()
         t = nil
     else
+        t = hs.task.new('/Applications/SofToken II.app/Contents/Resources/st-wrap.sh', pasteToken, {'-p'})
         t:setInput(pin)
         t:start()
     end
