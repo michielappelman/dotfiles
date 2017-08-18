@@ -1,6 +1,10 @@
 # load shared shell configuration
 source ~/.shrc
 
+# Style Options
+SPACESHIP_GIT_SYMBOL="🎋  "
+SPACESHIP_VENV_SHOW=false
+
 # oh-my-zsh config
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh_custom
