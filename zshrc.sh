@@ -7,6 +7,7 @@ ZSH_CUSTOM=$HOME/.zsh_custom
 ZSH_THEME=spaceship
 HIST_STAMPS="dd.mm.yyyy"
 DISABLE_UPDATE_PROMPT=true
+UPDATE_ZSH_DAYS=31
 
 if which brew &>/dev/null
 then
@@ -21,9 +22,6 @@ fi
 plugins=(git docker dirhistory mosh pep8 rsync python tmux sudo osx vagrant pylint pip history httpie git-extras django)
 source $ZSH/oh-my-zsh.sh
 source ~/.zprofile
-
-##### Variables #####
-export UPDATE_ZSH_DAYS=31
 
 ##### Key bindings #####
 bindkey '^S' sudo-command-line
