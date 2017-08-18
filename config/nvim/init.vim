@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'ervandew/supertab'
 Plugin 'jmcantrell/vim-virtualenv'
@@ -95,6 +96,8 @@ let g:slime_dont_ask_default = 1
 
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 " Disable auto-folding in Markdown
 let g:vim_markdown_folding_disabled=1
 
@@ -161,7 +164,10 @@ endif
 autocmd FileType python nnoremap <Leader>= :0,$!yapf<CR>
 
 " Set virtualenv for Neovim if it exists.
-if filereadable('~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python')
-    let g:python3_host_prog = '~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python'
+if filereadable(fnamemodify('~/.pyenv/versions/2.7.13/envs/neovim-2.7.13/bin/python', ':p'))
+    let g:python_host_prog = fnamemodify('~/.pyenv/versions/2.7.13/envs/neovim-2.7.13/bin/python', ':p')
+endif
+if filereadable(fnamemodify('~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python', ':p'))
+    let g:python3_host_prog = fnamemodify('~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python', ':p')
 endif
 
