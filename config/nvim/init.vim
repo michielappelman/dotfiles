@@ -1,6 +1,9 @@
 " ======= NeoVim specific options ========
 set clipboard=unnamedplus
 
+if !has('nvim')
+	set term=xterm-256color
+endif
 
 " ======= Vundle Setup ========
 set nocompatible
@@ -15,6 +18,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'jpalardy/vim-slime'
 Plugin 'mhinz/vim-signify'
@@ -149,6 +153,8 @@ set si "Smart indent
 
 set laststatus=2
 
+set t_Co=256 " Ignored by nvim
+
 if exists('+colorcolumn')
   set colorcolumn=100
   highlight ColorColumn ctermbg=1
@@ -170,4 +176,48 @@ endif
 if filereadable(fnamemodify('~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python', ':p'))
     let g:python3_host_prog = fnamemodify('~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python', ':p')
 endif
+
+" Go Settings
+" ---------------
+
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_term_enabled = 1
+let g:go_list_type = "quickfix"
+let g:go_addtags_transform = "camelcase"
+
+" vim-go
+augroup vg
+"au FileType go nmap <Leader>b :GoBuild<CR>
+" au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+au FileType go nmap <Leader>cr :GoCallers<CR>
+au FileType go nmap <Leader>ce :GoCallees<CR>
+au FileType go nmap <Leader>? :GoCoverageToggle<CR>
+au FileType go nmap <Leader>D :GoDefPop<CR>
+au FileType go nmap <Leader>v :GoImplements<CR>
+au FileType go nmap <Leader>I :GoImports<CR>
+au FileType go nmap <Leader>i :GoInstall<CR>
+au FileType go nmap <Leader>p :GoPlay<CR>
+au FileType go nmap <Leader>' :GoDocBrowser<CR>
+au FileType go nmap <Leader>b :GoToggleBreakpoint<CR>
+au FileType go nmap <Leader>db :GoDebug<CR>
+au FileType go nmap <Leader>e :Refactor extract
+
+au FileType go nmap <leader>rt <Plug>(go-run-tab)
+au FileType go nmap <Leader>rs <Plug>(go-run-split)
+au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
+
+au FileType go nmap <Leader>,, :GoAlternate<CR>
+au FileType go nmap <Leader>T :GoTestFunc
+au FileType go nmap <Leader>t :GoTest
+au FileType go nmap <Leader>r :GoReferrers<CR>
+au FileType go nmap <Leader>cp :GoChannelPeers<CR>
+au FileType go nmap <Leader>d :GoDef<CR>
+au FileType go nmap <Leader>k :GoInfo<CR>
+
+augroup END
 

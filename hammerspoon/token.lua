@@ -6,24 +6,9 @@
 --
 -- Written by Michiel Appelman <michiel@appelman.se>
 
-function getPIN()
-    local file = io.open("pin.txt", 'rb')
-    if not file then return nil end
-    local content = file:read "*a"
-    file:close()
-    return content
-end
-
 function getToken()
-    pin = getPIN()
-    if not pin then
-        hs.notify.new({title="Hammerspoon", informativeText="No PIN file found!"}):send()
-        t = nil
-    else
-        t = hs.task.new('/Applications/SofToken II.app/Contents/Resources/st-wrap.sh', pasteToken, {'-p'})
-        t:setInput(pin)
-        t:start()
-    end
+    t = hs.task.new('/Users/michiel/.pyenv/versions/MobilePASSER-2.7.12/bin/python2.7', pasteToken, {'/Users/michiel/sources/MobilePASSER/cli.py', '-c', '/Users/michiel/sources/MobilePASSER/mobilepasser.cfg'})
+    t:start()
 end
 
 function pasteToken(code, out, err)

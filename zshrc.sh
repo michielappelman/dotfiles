@@ -8,10 +8,36 @@ SPACESHIP_VENV_SHOW=false
 # oh-my-zsh config
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh_custom
-ZSH_THEME=spaceship
 HIST_STAMPS="dd.mm.yyyy"
 DISABLE_UPDATE_PROMPT=true
 UPDATE_ZSH_DAYS=31
+
+ZSH_THEME=spaceship
+SPACESHIP_PROMPT_ORDER=(
+  time          # Time stampts section
+  user          # Username section
+  host          # Hostname section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  package       # Package version
+  ruby          # Ruby section
+  elixir        # Elixir section
+  xcode         # Xcode section
+  swift         # Swift section
+  golang        # Go section
+  rust          # Rust section
+  aws           # Amazon Web Services section
+  venv          # virtualenv section
+  pyenv         # Pyenv section
+  kubecontext   # Kubectl context section
+  exec_time     # Execution time
+  line_sep      # Line break
+  vi_mode       # Vi-mode indicator
+  jobs          # Backgound jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+  )
 
 if which brew &>/dev/null
 then
