@@ -1,3 +1,4 @@
+cask_args appdir: "/Applications"
 tap "homebrew/science"
 tap "homebrew/core"
 tap "homebrew/boneyard"
@@ -54,10 +55,10 @@ brew "leptonica"
 brew "libevent"
 brew "libssh"
 brew "libtermkey"
-brew "libuv"
 brew "libvterm"
 brew "libyaml"
 brew "lynx"
+brew "mas"
 brew "media-info"
 brew "mercurial"
 brew "mosh"
@@ -66,8 +67,6 @@ brew "mtr"
 brew "unibilium"
 brew "neovim"
 brew "nmap"
-brew "node"
-brew "oath-toolkit"
 brew "opencv"
 brew "parallel"
 brew "tree"
@@ -101,7 +100,6 @@ cask "alfred"
 cask "arq"
 cask "bartender"
 cask "box-sync"
-cask "boxer"
 cask "caffeine"
 cask "calibre"
 cask "db-browser-for-sqlite"
@@ -115,7 +113,6 @@ cask "hammerspoon"
 cask "handbrake"
 cask "istat-menus"
 cask "macdown"
-cask "postman"
 cask "qlcolorcode"
 cask "qlmarkdown"
 cask "qlprettypatch"
@@ -130,5 +127,16 @@ cask "transmission"
 cask "vagrant"
 cask "virtualbox"
 cask "vlc"
-cask "webpquicklook"
 cask "wireshark"
+mas "MobilePASS", id: 972648459
+mas "Snappy", id: 512617038
+mas "VSD Viewer", id: 580788158
+mas "Xcode", id: 497799835
+mas "Evernote", id: 406056744
+mas "MailRaider", id: 558268579
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Keynote", id: 409183694
+mas "iMovie", id: 408981434
+mas "Microsoft Remote Desktop", id: 715768417
+mas "Duplicate Photos Fixer Pro", id: 963642514
