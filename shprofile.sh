@@ -33,9 +33,6 @@ function pynew() {
   pyenv virtualenv "$version" "$1"-"$version" &&
   pyenv local "$1"-"$version" &&
   pip install --upgrade pip &&
-  pip install pylint &&
-  pip install neovim &&
-  pip install yapf &&
   [ -e "requirements.txt" ] &&
   pip install -r requirements.txt
 }
