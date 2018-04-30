@@ -6,12 +6,11 @@ export SAVEHIST=100000
 export KEYTIMEOUT=1
 export SSH_AUTH_SOCK=/tmp/ssh-agent
 
-export PATH="$GOPATH/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/texlive/2015/bin/x86_64-darwin/"
+export PATH="$GOPATH/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export PIP_REQUIRE_VIRTUALENV=true
-export WORKON_HOME=$HOME/.virtualenvs
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 export GOPATH=$HOME/Documents/sources/go
