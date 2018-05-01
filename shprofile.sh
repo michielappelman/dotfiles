@@ -11,7 +11,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export PIP_REQUIRE_VIRTUALENV=true
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 export GOPATH=$HOME/Documents/sources/go
 
@@ -25,6 +24,13 @@ alias sag="ssh-agent -a $SSH_AUTH_SOCK > /dev/null && ssh-add ~/.ssh/id_rsa"
 function remove_lines_from() { grep -F -x -v -f $2 $1; }
 function gpip() { PIP_REQUIRE_VIRTUALENV="" pip "$@" }
 function gpip3() { PIP_REQUIRE_VIRTUALENV="" pip3 "$@" }
+
+if which pyenv > /dev/null; then
+    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 # Create a new Python virtual env
 function pynew() {

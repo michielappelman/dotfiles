@@ -66,9 +66,3 @@ bindkey '\e.' insert-last-word
 if $(which archey >/dev/null 2>&1); then
     archey -c -o
 fi
-
-if which pyenv > /dev/null; then
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
