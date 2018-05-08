@@ -131,15 +131,15 @@ cask "vagrant"
 cask "virtualbox"
 cask "vlc"
 cask "wireshark"
-mas "MobilePASS", id: 972648459
-mas "Snappy", id: 512617038
-mas "VSD Viewer", id: 580788158
-mas "Xcode", id: 497799835
 mas "Evernote", id: 406056744
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
 mas "MailRaider", id: 558268579
+mas "Microsoft Remote Desktop", id: 715768417
+mas "MobilePASS", id: 972648459
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Keynote", id: 409183694
-mas "iMovie", id: 408981434
-mas "Microsoft Remote Desktop", id: 715768417
-mas "Duplicate Photos Fixer Pro", id: 963642514
+mas "Snappy", id: 512617038
+mas "Twitter", id: 409789998
+mas "VSD Viewer", id: 580788158
+mas "Xcode", id: 497799835
