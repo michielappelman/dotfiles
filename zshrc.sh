@@ -39,17 +39,7 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
   )
 
-if which brew &>/dev/null
-then
-  [ -w $BREW_PREFIX/bin/brew ] && \
-    [ ! -f $BREW_PREFIX/share/zsh/site-functions/_brew ] && \
-    mkdir -p $BREW_PREFIX/share/zsh/site-functions &>/dev/null && \
-    ln -s $BREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh \
-          $BREW_PREFIX/share/zsh/site-functions/_brew
-  export FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
-fi
-
-plugins=(git docker dirhistory mosh pep8 rsync python tmux sudo osx vagrant pylint pip history httpie git-extras django)
+plugins=(git dirhistory mosh rsync python tmux sudo osx pip history httpie git-extras)
 source $ZSH/oh-my-zsh.sh
 source ~/.zprofile
 
@@ -62,7 +52,3 @@ bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 bindkey '\e.' insert-last-word
 
-# Run archey if available:
-if $(which archey >/dev/null 2>&1); then
-    archey -c -o
-fi

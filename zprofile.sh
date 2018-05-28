@@ -2,7 +2,12 @@
 source ~/.shprofile
 
 # Enable completions
-autoload -U compinit && compinit
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+    compinit
+else
+    compinit -C
+fi
 
 # Style ZSH output
 zstyle ':completion:*:descriptions' format '%B%d%b'
