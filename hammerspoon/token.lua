@@ -7,7 +7,7 @@
 -- Written by Michiel Appelman <michiel@appelman.se>
 
 function getToken()
-    t = hs.task.new('/Users/michiel/.pyenv/versions/MobilePASSER-2.7.12/bin/python2.7', pasteToken, {'/Users/michiel/sources/MobilePASSER/cli.py', '-c', '/Users/michiel/sources/MobilePASSER/mobilepasser.cfg'})
+    t = hs.task.new('/Users/mappelma/.pyenv/shims/mobilepasser', pasteToken, {'-c', '/Users/mappelma/Documents/sources/MobilePASSER/mobilepasser.cfg'})
     t:start()
 end
 
