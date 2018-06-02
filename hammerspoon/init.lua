@@ -8,6 +8,7 @@ hypershift = {"ctrl", "alt", "cmd", "shift"}
 require('watcher')
 require('position')
 require('token')
+require('audio')
 
 -- Defeate Paste Blocking
 -- http://www.hammerspoon.org/go/
