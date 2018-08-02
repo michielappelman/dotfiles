@@ -12,7 +12,7 @@ else
     mod_doy=$(stat -c '%Y' ~/.zcompdump | date +'%j')
 fi
 
-if [ $(date +'%j') != $mod_doy]; then
+if [ $(date +'%j') != $mod_doy ]; then
     compinit
 else
     compinit -C
