@@ -9,7 +9,7 @@ autoload -Uz compinit
 if [ $(uname -s) = "Darwin" ]; then
     mod_doy=$(stat -f '%Sm' -t '%j' ~/.zcompdump)
 else
-    mod_doy=$(stat -c '%Y' ~/.zcompdump | date +'%j')
+    mod_doy=$(date -d "@$(stat -c "%Y" .zcompdump)" "+%j")
 fi
 
 if [ $(date +'%j') != $mod_doy ]; then
