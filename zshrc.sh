@@ -38,6 +38,8 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
   )
+SPACESHIP_VI_MODE_INSERT="${SPACESHIP_VI_MODE_INSERT:="🖋 "}"
+SPACESHIP_VI_MODE_NORMAL="${SPACESHIP_VI_MODE_NORMAL:="🔏"}"
 
 plugins=(git dirhistory mosh rsync python tmux sudo osx pip history httpie git-extras vi-mode)
 source $ZSH/oh-my-zsh.sh
