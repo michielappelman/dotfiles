@@ -19,8 +19,11 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
+Plugin 'godlygeek/tabular'
+Plugin 'iCyMind/NeoSolarized'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'jpalardy/vim-slime'
+Plugin 'kshenoy/vim-signature'
 Plugin 'mhinz/vim-signify'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mitsuhiko/vim-jinja'
@@ -39,6 +42,10 @@ filetype plugin indent on
 set updatetime=250
 " ======= END Vundle Setup ========
 
+" ======== Theme Settings ==========
+set termguicolors
+colorscheme NeoSolarized
+set background=dark
 
 " ======= Shortcut remaps ========
 let mapleader = " "
@@ -162,6 +169,10 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
+" Markdown Settings
+" ---------------
+autocmd FileType markdown setlocal tw=100 fo+=t
+let g:vim_markdown_toc_autofit = 1
 
 " Python Settings
 " ---------------
