@@ -1,1 +1,1 @@
-/Users/mappelma/.zsh_custom/themes/spaceship-prompt/spaceship.zsh-theme
+spaceship-prompt/spaceship.zsh-theme
