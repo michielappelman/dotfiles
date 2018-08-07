@@ -39,7 +39,7 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
   )
 
-plugins=(git dirhistory mosh rsync python tmux sudo osx pip history httpie git-extras)
+plugins=(git dirhistory mosh rsync python tmux sudo osx pip history httpie git-extras vi-mode)
 source $ZSH/oh-my-zsh.sh
 source ~/.zprofile
 
