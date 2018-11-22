@@ -4,3 +4,6 @@
 [submodule "zsh_custom/themes/spaceship-prompt"]
 	path = zsh_custom/themes/spaceship-prompt
 	url = https://github.com/denysdovhan/spaceship-prompt/
+[submodule "zsh_custom/plugins/zsh-autosuggestions"]
+	path = zsh_custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git

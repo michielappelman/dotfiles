@@ -1,10 +1,6 @@
 # load shared shell configuration
 source ~/.shrc
 
-# Style Options
-SPACESHIP_GIT_SYMBOL="🎋  "
-SPACESHIP_VENV_SHOW=false
-
 # oh-my-zsh config
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.zsh_custom
@@ -20,14 +16,7 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   git           # Git section (git_branch + git_status)
   hg            # Mercurial section (hg_branch  + hg_status)
-  package       # Package version
-  ruby          # Ruby section
-  elixir        # Elixir section
   xcode         # Xcode section
-  swift         # Swift section
-  golang        # Go section
-  rust          # Rust section
-  aws           # Amazon Web Services section
   venv          # virtualenv section
   pyenv         # Pyenv section
   kubecontext   # Kubectl context section
@@ -38,10 +27,12 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
   )
-SPACESHIP_VI_MODE_INSERT="${SPACESHIP_VI_MODE_INSERT:="🖋 "}"
-SPACESHIP_VI_MODE_NORMAL="${SPACESHIP_VI_MODE_NORMAL:="🔏"}"
+SPACESHIP_VI_MODE_INSERT="${SPACESHIP_VI_MODE_INSERT:="i"}"
+SPACESHIP_VI_MODE_NORMAL="${SPACESHIP_VI_MODE_NORMAL:="n"}"
+SPACESHIP_GIT_SYMBOL="🎋  "
+SPACESHIP_VENV_SHOW=false
 
-plugins=(git dirhistory mosh rsync python tmux sudo osx pip history httpie git-extras vi-mode)
+plugins=(zsh-autosuggestions git dirhistory mosh rsync python tmux sudo osx pip history httpie git-extras vi-mode)
 source $ZSH/oh-my-zsh.sh
 source ~/.zprofile
 
@@ -54,3 +45,9 @@ bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 bindkey '\e.' insert-last-word
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mappelma/Documents/sources/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mappelma/Documents/sources/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mappelma/Documents/sources/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mappelma/Documents/sources/google-cloud-sdk/completion.zsh.inc'; fi
