@@ -15,7 +15,7 @@
 -- OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 -- DEALINGS IN THE SOFTWARE.
 
-hs.window.animationDuration = 0.3
+hs.window.animationDuration = 0.2
 
 local sizes = {2, 3, 3/2}
 local fullScreenSizes = {1, 4/3, 2}
@@ -163,16 +163,4 @@ hs.hotkey.bind(hyper, "up", function ()
   end
 end, function () 
   pressed.up = false
-end)
-
-hs.hotkey.bind(hyper, "f", function ()
-  nextFullScreenStep()
-end)
-
-hs.hotkey.bind(hyper, "i", function ()
-  local win = hs.window.frontmostWindow()
-  local id = win:id()
-  local screen = win:screen()
-  cell = hs.grid.get(win, screen)
-  hs.alert.show(cell)
 end)

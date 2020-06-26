@@ -2,27 +2,21 @@
 -- https://github.com/michielappelman/dotfiles
 
 altcmd = {"alt", "cmd"}
+altcmdshift = {"alt", "cmd", "shift"}
 hyper = {"ctrl", "alt", "cmd"}
 hypershift = {"ctrl", "alt", "cmd", "shift"}
 
 require('watcher')
 require('position')
-require('token')
+require('win-move-size')
 require('audio')
+require('webex-mute')
 
--- Defeate Paste Blocking
--- http://www.hammerspoon.org/go/
-hs.hotkey.bind({"cmd", "alt"}, "V", function() hs.eventtap.keyStrokes(hs.pasteboard.getContents()) end)
-
--- Set volume to mute when not at home.
+-- Set volume to zero when at Cisco.
 wifiWatcher = nil
 function ssidChangedCallback()
     newSSID = hs.wifi.currentNetwork()
-    -- Cisco Network Settings
     if newSSID ~= "blizzard" then
-        hs.audiodevice.defaultOutputDevice():setVolume(0)
-    -- Home Network Settings
-    elseif newSSID ~= "Chapter 2" then
         hs.audiodevice.defaultOutputDevice():setVolume(0)
     end
 end
@@ -31,9 +25,7 @@ wifiWatcher:start()
 
 -- Quick Switch
 hs.fnutils.each({
-  { key = "c", app = "Google Chrome" },
-  { key = "e", app = "Evernote" },
-  { key = "m", app = "Mail" },
+  { key = "f", app = "Firefox" },
   { key = "i", app = "iTerm" }
 }, function(object)
     hs.hotkey.bind(hyper, object.key, function() hs.application.launchOrFocus(object.app) end) 
