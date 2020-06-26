@@ -1,46 +1,51 @@
-" ======= NeoVim specific options ========
 set clipboard=unnamedplus
 
 if !has('nvim')
 	set term=xterm-256color
 endif
 
-" ======= Vundle Setup ========
-set nocompatible
-filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
-" Start - Vundle plugins
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go'
-Plugin 'godlygeek/tabular'
-Plugin 'iCyMind/NeoSolarized'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'jpalardy/vim-slime'
-Plugin 'kshenoy/vim-signature'
-Plugin 'mhinz/vim-signify'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'mitsuhiko/vim-jinja'
-Plugin 'pearofducks/ansible-vim'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'w0rp/ale'
-" End - Vundle plugins
-call vundle#end()
-filetype plugin indent on
-set updatetime=250
-" ======= END Vundle Setup ========
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '/Users/mappelma/.pyenv/versions/tools3/bin/python'
+
+call plug#begin('~/.config/nvim/bundle')
+" Cosmetic
+Plug 'iCyMind/NeoSolarized'
+Plug 'vim-airline/vim-airline'
+
+" Language specific
+Plug 'fatih/vim-go'
+Plug 'plasticboy/vim-markdown'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'pearofducks/ansible-vim'
+Plug 'mitsuhiko/vim-jinja'
+
+" Python
+Plug 'psf/black'
+Plug 'davidhalter/jedi-vim'
+
+" Editing
+Plug 'editorconfig/editorconfig-vim'
+Plug 'godlygeek/tabular'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'scrooloose/nerdcommenter'
+
+" Navigation
+Plug 'tpope/vim-vinegar'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'kshenoy/vim-signature'
+Plug 'easymotion/vim-easymotion'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-surround'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Code
+Plug 'ervandew/supertab'
+Plug 'jpalardy/vim-slime'
+call plug#end()
 
 " ======== Theme Settings ==========
 if exists('+termguicolors')
@@ -48,8 +53,9 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
   colorscheme NeoSolarized
+  set background=dark
+  let g:neosolarized_contrast = "high"
 endif
-set background=dark
 
 " ======= Shortcut remaps ========
 let mapleader = " "
@@ -72,14 +78,21 @@ set pastetoggle=<F6>
 map <F7> :set invpaste<CR>
 set pastetoggle=<F7>
 
-" ======= Window / Tab Movement ========
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+" ======= Window / Tab settings ========
+nmap <Leader>h :tabp <CR>
+nmap <Leader>l :tabn <CR>
 
-nmap <Leader>, :tabp <CR>
-nmap <Leader>. :tabn <CR>
+set switchbuf=usetab,newtab
+
+let g:bufExplorerDefaultHelp=0
+
+if exists('+colorcolumn')
+  set colorcolumn=100
+  highlight ColorColumn ctermbg=1
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
 
 set mouse=a
 
@@ -98,7 +111,7 @@ let g:airline_mode_map = {
   \ 'S'  : 'S',
   \ '' : 'S',
   \ }
-let g:airline_extensions = ['hunks', 'branch', 'ale', 'virtualenv', 'whitespace', 'wordcount']
+let g:airline_extensions = ['hunks', 'branch', 'whitespace', 'wordcount']
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline_section_z = '%2c:%l/%L'
 let g:airline#extensions#default#section_truncate_width = {
@@ -108,8 +121,6 @@ let g:airline#extensions#default#section_truncate_width = {
 
 let g:slime_default_config = {"sessionname": "repl", "windowname": "0"}
 let g:slime_dont_ask_default = 1
-
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
@@ -166,12 +177,13 @@ set laststatus=2
 
 set t_Co=256 " Ignored by nvim
 
-if exists('+colorcolumn')
-  set colorcolumn=100
-  highlight ColorColumn ctermbg=1
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+" netrw Explorer settings
+let g:netrw_banner = 0
+let g:netrw_winsize = 20
+let g:netrw_browse_split = 4
+let g:netrw_liststyle = 3
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+autocmd FileType netrw set nolist
 
 " Markdown Settings
 " ---------------
@@ -182,19 +194,11 @@ let g:vim_markdown_toc_autofit = 1
 " ---------------
 
 " Space, = does a Python format of the complete file.
-autocmd FileType python nnoremap <Leader>= :0,$!yapf<CR>
-
-" Set virtualenv for Neovim if it exists.
-if filereadable(fnamemodify('~/.pyenv/versions/2.7.13/envs/neovim-2.7.13/bin/python', ':p'))
-    let g:python_host_prog = fnamemodify('~/.pyenv/versions/2.7.13/envs/neovim-2.7.13/bin/python', ':p')
-endif
-if filereadable(fnamemodify('~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python', ':p'))
-    let g:python3_host_prog = fnamemodify('~/.pyenv/versions/3.5.2/envs/neovim-3.5.2/bin/python', ':p')
-endif
+autocmd FileType python nnoremap <Leader>= :Black<CR>
+autocmd BufWritePre *.py execute ':Black'
 
 " Go Settings
 " ---------------
-
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -208,7 +212,7 @@ let g:go_addtags_transform = "camelcase"
 " vim-go
 augroup vg
 "au FileType go nmap <Leader>b :GoBuild<CR>
-" au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+"au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 au FileType go nmap <Leader>cr :GoCallers<CR>
 au FileType go nmap <Leader>ce :GoCallees<CR>
 au FileType go nmap <Leader>? :GoCoverageToggle<CR>
