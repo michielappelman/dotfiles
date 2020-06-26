@@ -1,12 +1,11 @@
 # load shared shell configuration
 source ~/.shprofile
 
-
 # Enable completions
 autoload -Uz compinit
 
 # Update once per day
-if [ $(uname -s) = "Darwin" ]; then
+if [ $MACOS ]; then
     mod_doy=$(stat -f '%Sm' -t '%j' ~/.zcompdump)
 else
     mod_doy=$(date -d "@$(stat -c "%Y" ~/.zcompdump)" "+%j")

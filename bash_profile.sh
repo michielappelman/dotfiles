@@ -13,7 +13,6 @@ shopt -s histappend
 
 # Bash completion
 [ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
-[ -f $BREW_PREFIX/etc/bash_completion ] && source $BREW_PREFIX/etc/bash_completion >/dev/null
 
 # Colorful prompt
 if [ $USER = "root" ]

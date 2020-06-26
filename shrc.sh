@@ -15,6 +15,22 @@ quiet_which() {
   which $1 &>/dev/null
 }
 
+# Set up editor
+if quiet_which nvim
+then
+  export EDITOR="nvim"
+  alias vi="nvim"
+  alias vim="nvim"
+elif quiet_which vim
+then
+  export EDITOR="vim"
+  alias vi="vim"
+elif quiet_which vi
+then
+  export EDITOR="vi"
+fi
+alias e="$EDITOR"
+
 if [ $OSX ]
 then
   export GREP_OPTIONS="--color=auto"
@@ -37,22 +53,5 @@ elif [ $LINUX ]
 then
   alias su="/bin/su -"
   alias ls="ls -F --color=auto"
-fi
-
-if quiet_which nvim
-then
-  export EDITOR="nvim"
-  alias vi="nvim"
-elif quiet_which subl || quiet_which sublime_text
-then
-  quiet_which subl && export EDITOR="subl"
-  quiet_which sublime_text && export EDITOR="sublime_text" \
-    && alias subl="sublime_text"
-
-  export GIT_EDITOR="$EDITOR -w"
-  export SVN_EDITOR="$GIT_EDITOR"
-elif quiet_which vi
-then
-  export EDITOR="vi"
 fi
 
