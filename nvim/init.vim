@@ -7,7 +7,7 @@ endif
 let g:loaded_python_provider = 0
 let g:python3_host_prog = '/Users/mappelma/.pyenv/versions/tools3/bin/python'
 
-call plug#begin('~/.config/nvim/bundle')
+call plug#begin()
 " Cosmetic
 Plug 'iCyMind/NeoSolarized'
 Plug 'vim-airline/vim-airline'
