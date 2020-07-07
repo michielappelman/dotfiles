@@ -6,6 +6,12 @@ altcmdshift = {"alt", "cmd", "shift"}
 hyper = {"ctrl", "alt", "cmd"}
 hypershift = {"ctrl", "alt", "cmd", "shift"}
 
+hs.loadSpoon("ClipboardTool")
+spoon.ClipboardTool.show_in_menubar = false
+spoon.ClipboardTool.paste_on_select = true
+spoon.ClipboardTool:bindHotkeys({toggle_clipboard = {hyper, "v"}})
+spoon.ClipboardTool:start()
+
 require('watcher')
 require('position')
 require('win-move-size')
