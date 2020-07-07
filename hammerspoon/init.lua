@@ -29,9 +29,11 @@ end
 wifiWatcher = hs.wifi.watcher.new(ssidChangedCallback)
 wifiWatcher:start()
 
+-- Quick Open
+hs.hotkey.bind(hyper, "f", function() hs.application.get("Finder"):selectMenuItem("New Finder Window") end)
+
 -- Quick Switch
 hs.fnutils.each({
-  { key = "f", app = "Firefox" },
   { key = "i", app = "iTerm" }
 }, function(object)
     hs.hotkey.bind(hyper, object.key, function() hs.application.launchOrFocus(object.app) end) 
