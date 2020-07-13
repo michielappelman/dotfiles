@@ -7,6 +7,7 @@ hs.hotkey.bind(hyper, "a", function ()
         end
         switched = next_dev:setDefaultOutputDevice()
         if switched then
+            hs.alert.show(next_dev:name())
             break
         end
        end
