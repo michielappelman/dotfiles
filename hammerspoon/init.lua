@@ -11,6 +11,7 @@ hs.loadSpoon('ControlEscape'):start()
 hs.loadSpoon("ClipboardTool")
 spoon.ClipboardTool.show_in_menubar = false
 spoon.ClipboardTool.paste_on_select = true
+spoon.ClipboardTool.show_copied_alert = false
 spoon.ClipboardTool:bindHotkeys({toggle_clipboard = {hyper, "v"}})
 spoon.ClipboardTool:start()
 
