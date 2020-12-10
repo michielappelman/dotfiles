@@ -12,7 +12,7 @@ require('watcher')
 require('position')
 require('win-move-size')
 require('audio')
-require('webex-mute')
+--require('webex-mute')
 
 -- Set volume to zero when at Cisco.
 wifiWatcher = nil
