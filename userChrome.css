@@ -1,0 +1,21 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+/* This is to give more screen real-estate to the actual browser window when
+ * using Tree Style Tabs
+ *
+ * NOTE: Also in Firefox 69+ go to about:config and set toolkit.legacyUserProfileCustomizations.stylesheets to true
+ * Source: https://github.com/piroor/treestyletab/issues/1525
+ * */
+
+/* to hide the native tabs*/
+#TabsToolbar > .toolbar-items,
+#TabsToolbar > .titlebar-spacer{ visibility: hidden }
+#nav-bar{ margin-top: -32px; padding: 0px 15px 0px 75px !important; }
+
+/*Hide the sidebar header*/
+#sidebar-header { display: none; }
+
+/* hide the sidebar in fullscreen mode (F11) */
+#main-window[inFullscreen] #sidebar-box {
+   display:none !important;
+   width: 0px !important;
+}
