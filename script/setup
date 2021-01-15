@@ -27,7 +27,7 @@ for DOTFILE in *; do
 done
 
 # Configure neovim
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 VIM_PLUG="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
 
 mkdir -p "$CONFIG_DIR"
