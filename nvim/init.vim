@@ -1,4 +1,4 @@
-set clipboard=unnamedplus
+"set clipboard=unnamed
 
 if !has('nvim')
 	set term=xterm-256color
@@ -9,8 +9,13 @@ let g:python3_host_prog = '/Users/mappelma/.pyenv/versions/tools3/bin/python'
 
 call plug#begin()
 " Cosmetic
-Plug 'iCyMind/NeoSolarized'
+Plug 'reedes/vim-colors-pencil'
 Plug 'vim-airline/vim-airline'
+
+" Prose / Regular Text
+Plug 'kana/vim-textobj-user'
+Plug 'reedes/vim-textobj-quote'
+Plug 'reedes/vim-textobj-sentence'
 
 " Language specific
 Plug 'fatih/vim-go'
@@ -52,9 +57,9 @@ if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
-  colorscheme NeoSolarized
-  set background=dark
-  let g:neosolarized_contrast = "high"
+  colorscheme pencil
+  set background=light
+  let g:pencil_higher_contrast_ui = 1
 endif
 
 " ======= Shortcut remaps ========
@@ -124,8 +129,6 @@ let g:slime_dont_ask_default = 1
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" Disable auto-folding in Markdown
-let g:vim_markdown_folding_disabled=1
 
 " ======= General Settings ========
 " Allow unsaved buffers to lose focus
@@ -175,8 +178,6 @@ set si "Smart indent
 
 set laststatus=2
 
-set t_Co=256 " Ignored by nvim
-
 " netrw Explorer settings
 let g:netrw_banner = 0
 let g:netrw_winsize = 20
@@ -187,8 +188,15 @@ autocmd FileType netrw set nolist
 
 " Markdown Settings
 " ---------------
-autocmd FileType markdown setlocal tw=100 fo+=t
-let g:vim_markdown_toc_autofit = 1
+autocmd FileType markdown,mkd setl fdl=6 tw=0 linebreak breakindent
+                          \ | set conceallevel=2
+                          \ | let g:vim_markdown_strikethrough = 1
+                          \ | let g:vim_markdown_toc_autofit = 1
+                          \ | let g:vim_markdown_folding_disabled=1
+                          \ | let g:vim_markdown_auto_insert_bullets = 1
+                          \ | let g:vim_markdown_new_list_item_indent = 1
+                          \ | let g:vim_markdown_edit_url_in = 'tab'
+                          \ | let g:vim_markdown_conceal_code_blocks = 0
 
 " Python Settings
 " ---------------
@@ -240,3 +248,37 @@ au FileType go nmap <Leader>k :GoInfo<CR>
 
 augroup END
 
+" ======== Prose Related Settings ==========
+function! Prose()
+  colorscheme pencil
+  set background=light
+  let g:airline_theme = 'pencil'
+
+  setl filetype=markdown
+  setl noru nonu nornu
+
+  call textobj#quote#init()
+  call textobj#sentence#init()
+  "call lexical#init()
+  "call litecorrect#init()
+  
+  " force top correction on most recent misspelling
+  nnoremap <buffer> <c-s> [s1z=<c-o>
+  inoremap <buffer> <c-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+
+  " replace common punctuation
+  iabbrev <buffer> -- –
+  iabbrev <buffer> --- —
+  iabbrev <buffer> << «
+  iabbrev <buffer> >> »
+
+  " open most folds
+  setlocal foldlevel=6
+
+  " replace typographical quotes (reedes/vim-textobj-quote)
+  map <silent> <buffer> <leader>qc <Plug>ReplaceWithCurly
+  map <silent> <buffer> <leaer>qs <Plug>ReplaceWithStraight
+
+endfunction
+
+command! -nargs=0 Prose call Prose()
