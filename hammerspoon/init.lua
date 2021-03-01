@@ -6,8 +6,6 @@ altcmdshift = {"alt", "cmd", "shift"}
 hyper = {"ctrl", "alt", "cmd"}
 hypershift = {"ctrl", "alt", "cmd", "shift"}
 
-hs.loadSpoon('ControlEscape'):start()
-
 require('watcher')
 require('position')
 require('win-move-size')
