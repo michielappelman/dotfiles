@@ -5,7 +5,7 @@ if !has('nvim')
 endif
 
 let g:loaded_python_provider = 0
-let g:python3_host_prog = '/Users/mappelma/.pyenv/versions/tools3/bin/python'
+let g:python3_host_prog = "/Users/mappelma/.pyenv/versions/neovim3/bin/python"
 
 call plug#begin()
 " Cosmetic
