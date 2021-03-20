@@ -1,34 +1,32 @@
 -- Hammerspoon config from Michiel
 -- https://github.com/michielappelman/dotfiles
 
-altcmd = {"alt", "cmd"}
-altcmdshift = {"alt", "cmd", "shift"}
 hyper = {"ctrl", "alt", "cmd"}
-hypershift = {"ctrl", "alt", "cmd", "shift"}
 
-require('watcher')
-require('position')
-require('win-move-size')
-require('audio')
---require('webex-mute')
-
--- Set volume to zero when at Cisco.
-wifiWatcher = nil
-function ssidChangedCallback()
-    newSSID = hs.wifi.currentNetwork()
-    if newSSID ~= "blizzard" then
-        hs.audiodevice.defaultOutputDevice():setVolume(0)
-    end
-end
-wifiWatcher = hs.wifi.watcher.new(ssidChangedCallback)
-wifiWatcher:start()
-
--- Quick Open
+-- Quick bindings
 hs.hotkey.bind(hyper, "f", function() hs.application.get("Finder"):selectMenuItem("New Finder Window") end)
+hs.hotkey.bind(hyper, "r", function() reload_config() end) 
 
--- Quick Switch
-hs.fnutils.each({
-  { key = "i", app = "iTerm" }
-}, function(object)
-    hs.hotkey.bind(hyper, object.key, function() hs.application.launchOrFocus(object.app) end) 
+-- Watcher to load the configuration in case of changes
+function reload_config(files)
+    hs.reload()
+    hs.notify.new({title="Hammerspoon", informativeText="Config reloaded"}):send()
+end
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
+
+-- Change Audio Output device
+hs.hotkey.bind(hyper, "a", function ()
+    for i,dev in ipairs(hs.audiodevice.allOutputDevices()) do
+       if dev:uid() == hs.audiodevice.defaultOutputDevice():uid() then
+        next_dev = hs.audiodevice.allOutputDevices()[i+1]
+        if next_dev == nil then
+            next_dev = hs.audiodevice.allOutputDevices()[1]
+        end
+        switched = next_dev:setDefaultOutputDevice()
+        if switched then
+            hs.alert.show(next_dev:name())
+            break
+        end
+       end
+    end
 end)
