@@ -1,8 +1,13 @@
-"set clipboard=unnamed
+" ======= Shortcut remaps ========
+let mapleader = " "
 
-if !has('nvim')
-	set term=xterm-256color
-endif
+" saving of files as sudo
+cmap w!! w !sudo tee > /dev/null %
+
+" Quickly open/reload vim
+nnoremap <leader>ev :tabe $MYVIMRC<CR>  
+nnoremap <leader>sv :source $MYVIMRC<CR>   
+
 
 let g:loaded_python_provider = 0
 let g:python3_host_prog = "/Users/mappelma/.pyenv/versions/neovim3/bin/python"
@@ -62,24 +67,25 @@ if exists('+termguicolors')
   let g:pencil_higher_contrast_ui = 1
 endif
 
-" ======= Shortcut remaps ========
-let mapleader = " "
+" ====== easymotion mappings =======
+let g:EasyMotion_do_mapping = 0
 map <Leader> <Plug>(easymotion-prefix)
+" Jump to anywhere with only `s{char}{target}`
+nmap s <Plug>(easymotion-s)
+nmap w <Plug>(easymotion-bd-w)
 
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
-"
-" Quickly open/reload vim
-nnoremap <leader>ev :tabe $MYVIMRC<CR>  
-nnoremap <leader>sv :source $MYVIMRC<CR>   
+" Bidirectional & within line f and t motions
+omap t <Plug>(easymotion-bd-tl)
+omap f <Plug>(easymotion-bd-fl)
+
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1
 
 " ======= Function Key remaps ========
 map <F2> :NERDTreeToggle<CR>
 map <F3> :Errors<CR>
-" F6 to toggle paste mode
 map <F6> :set invnumber<CR>
-set pastetoggle=<F6>
-" F7 to toggle paste mode
 map <F7> :set invpaste<CR>
 set pastetoggle=<F7>
 
