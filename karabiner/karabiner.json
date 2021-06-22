@@ -424,6 +424,16 @@
                             "key_code": "escape"
                         }
                     ]
+                },
+                {
+                    "from": {
+                        "key_code": "left_arrow"
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_control"
+                        }
+                    ]
                 }
             ],
             "virtual_hid_keyboard": {
