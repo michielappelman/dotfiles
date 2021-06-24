@@ -14,6 +14,7 @@ DISABLE_UPDATE_PROMPT=true
 
 zstyle ':completion:*' menu select
 
-source $HOME/.dotfiles/zsh-z.plugin.zsh
+source $HOME/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $HOME/.dotfiles/plugins/zsh-z/zsh-z.plugin.zsh
 
 eval "$(starship init zsh)"
