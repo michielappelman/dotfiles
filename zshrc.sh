@@ -12,4 +12,8 @@ setopt share_history
 HIST_STAMPS="dd.mm.yyyy"
 DISABLE_UPDATE_PROMPT=true
 
+zstyle ':completion:*' menu select
+
+source $HOME/.dotfiles/zsh-z.plugin.zsh
+
 eval "$(starship init zsh)"
