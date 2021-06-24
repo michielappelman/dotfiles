@@ -4,38 +4,29 @@ export SAVEHIST=100000
 export KEYTIMEOUT=1
 
 export GOPATH=$HOME/go
-export PATH="$HOME/.local/bin:$GOPATH/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/go/bin:$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# OS variables
 [ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
 [ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
-uname -s | grep -q "_NT-" && export WINDOWS=1
-grep -q "Microsoft" /proc/version 2>/dev/null && export UBUNTU_ON_WINDOWS=1
-
-export BREW_PREFIX="/usr/local"
 
 export PIP_REQUIRE_VIRTUALENV=true
+function gpip() { PIP_REQUIRE_VIRTUALENV="" pip "$@"; }
+function gpip3() { PIP_REQUIRE_VIRTUALENV="" pip3 "$@"; }
 
 ## SSH Config
 export SSH_AUTH_SOCK="/tmp/ssh-agent"
-# GPG for SSH
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
-
-## Aliases
-alias pp="ps axuf | pager"
-alias sag="ssh-agent -a $SSH_AUTH_SOCK > /dev/null && ssh-add ~/.ssh/personal_hosts_ed25519 ~/.ssh/personal_hosts_rsa"
-alias qat="bat --paging=never -n"
-alias curl="curl --proto-default https"
+alias sas="ssh-agent -a $SSH_AUTH_SOCK > /dev/null"
+alias sap="ssh-add ~/.ssh/personal_hosts_ed25519 ~/.ssh/personal_hosts_rsa"
+alias sak="ssh-add ~/.ssh/id_ecdsa_sk"
 
 ## Functions
 # FROM http://cfenollosa.com/misc/tricks.txt
+alias pp="ps axuf | pager"
+alias curl="curl --proto-default https"
+# removes lines from $1 if they appear in $2
 function remove_lines_from() { grep -F -x -v -f $2 $1; }
-function gpip() { PIP_REQUIRE_VIRTUALENV="" pip "$@" }
-function gpip3() { PIP_REQUIRE_VIRTUALENV="" pip3 "$@" }
 
 # Create a new Python virtual env
 function pynew() {

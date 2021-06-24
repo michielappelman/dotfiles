@@ -16,8 +16,3 @@ if [ $(date +'%j') != $mod_doy ]; then
 else
     compinit -C
 fi
-
-# Style ZSH output
-zstyle ':completion:*:descriptions' format '%B%d%b'
-zstyle ':completion:*:warnings' format '%B%F{red}Sorry, no matches for: %d%f%b'
-

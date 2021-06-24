@@ -1,8 +1,16 @@
 # load shared shell configuration
 source ~/.shprofile
 
+# run bashrc if this is a login, interactive shell
+[ "$0" = "-bash" ] && export LOGIN_BASH=1
+echo "$-" | grep -q "i" && export INTERACTIVE_BASH=1
+if [ -n "$LOGIN_BASH" ] && [ -n "$INTERACTIVE_BASH" ]
+then
+  source ~/.bashrc
+fi
+
 # Set HOST for ZSH compatibility
-export HOST=$HOSTNAME
+export HOST="$HOSTNAME"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -24,4 +32,3 @@ then
 else
   PS1='\[\033[01;32m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 fi
-
