@@ -12,9 +12,13 @@ setopt share_history
 HIST_STAMPS="dd.mm.yyyy"
 DISABLE_UPDATE_PROMPT=true
 
-zstyle ':completion:*' menu select
+zstyle ':autocomplete:*' recent-dirs zsh-z
+zstyle ':autocomplete:*' widget-style menu-select
 
-source $HOME/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $HOME/.dotfiles/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $HOME/.dotfiles/plugins/zsh-z/zsh-z.plugin.zsh
+source $HOME/.dotfiles/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+bindkey -M menuselect $key[Return] accept-line
 
 eval "$(starship init zsh)"
