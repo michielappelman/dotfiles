@@ -9,7 +9,7 @@
 /* to hide the native tabs*/
 #TabsToolbar > .toolbar-items,
 #TabsToolbar > .titlebar-spacer{ visibility: hidden }
-#nav-bar{ margin-top: -32px; padding: 0px 15px 0px 75px !important; }
+#nav-bar{ margin-top: -42px; padding: 0px 15px 0px 75px !important; }
 
 /*Hide the sidebar header*/
 #sidebar-header { display: none; }
