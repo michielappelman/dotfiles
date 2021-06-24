@@ -3,7 +3,6 @@ source ~/.zprofile
 source ~/.shrc
 
 export HISTFILE=~/.zsh_history
-export RPS1="%{$reset_color%}"
 
 setopt hist_find_no_dups
 setopt hist_reduce_blanks
