@@ -7,12 +7,14 @@ cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
 git submodule init && git submodule update
 
-for DOTFILE in *; do
+mkdir -p $HOME/.config
+
+for DOTFILE in * config/*; do
   HOMEFILE="$HOME/.$DOTFILE"
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-  echo $DOTFILE | egrep -q '(^nvim/$|^script/$|\.txt$|\.md$)' && continue
+  echo $DOTFILE | egrep -q '(^config/$|^script/$|\.txt$|\.md$)' && continue
 
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
@@ -25,16 +27,3 @@ for DOTFILE in *; do
     ln -sv "$DIRFILE" "$HOMEFILE"
   fi
 done
-
-# Configure neovim
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
-VIM_PLUG="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
-
-mkdir -p "$CONFIG_DIR"
-ln -sfv "$DOTFILESDIR/nvim" "$CONFIG_DIR"
-
-mkdir -p $(dirname "$VIM_PLUG")
-rm "$VIM_PLUG"
-ln -sv "$DOTFILESDIR/nvim/plug.vim" "$VIM_PLUG"
-
-which nvim && nvim +PlugInstall
