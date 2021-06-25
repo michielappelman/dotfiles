@@ -5,18 +5,27 @@ vim.api.nvim_set_keymap('', '<leader>S', [[:lua require('spectre').open()<CR>]],
 vim.o.pastetoggle = "<F7>"
 
 -- Hop mappings
-vim.api.nvim_set_keymap('', 'w',
+vim.api.nvim_set_keymap('', '<leader>w',
                         "<cmd>lua require'hop'.hint_words({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>",
                         {})
-vim.api.nvim_set_keymap('', 'b',
+vim.api.nvim_set_keymap('', '<leader>b',
                         "<cmd>lua require'hop'.hint_words({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>",
                         {})
-vim.api.nvim_set_keymap('', 'f',
-                        "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>",
-                        {})
+
+-- Hop has not fixed behaviour yet with regards to including or excluding the character to hop to.
+-- Issue: https://github.com/phaazon/hop.nvim/issues/82
+-- vim.api.nvim_set_keymap('', 'f',
+--                         "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>",
+--                         {})
 vim.api.nvim_set_keymap('', 'F',
                         "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>",
                         {})
+vim.api.nvim_set_keymap('', 't',
+                        "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>",
+                        {})
+-- vim.api.nvim_set_keymap('', 'T',
+--                         "<cmd>lua require'hop'.hint_char1({ direction = re'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>",
+--                         {})
 
 -- Function Keys Mapping
 vim.api.nvim_set_keymap('', '<F2>', [[<Esc>:NvimTreeToggle<CR>]],

@@ -116,6 +116,11 @@ require('packer').startup({
       requires = {"kyazdani42/nvim-web-devicons", opt = true},
       config = function() require("trouble").setup {} end
     }
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function() require("todo-comments").setup {} end
+    }
 
   end,
   config = {display = {open_fn = require"packer.util".float}}
