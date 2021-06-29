@@ -32,7 +32,9 @@ brew "libevent"
 brew "fftw"
 brew "figlet"
 brew "fish"
+brew "portaudio"
 brew "fzf"
+brew "jbig2dec"
 brew "ghostscript"
 brew "gist"
 brew "git"
@@ -60,7 +62,6 @@ brew "imagemagick"
 brew "innoextract"
 brew "iperf3"
 brew "irssi"
-brew "jbig2dec"
 brew "jq"
 brew "leptonica"
 brew "libfido2"
@@ -76,7 +77,6 @@ brew "mas"
 brew "media-info"
 brew "mercurial"
 brew "mosh"
-brew "mplayer"
 brew "msgpack"
 brew "mtr"
 brew "neovim", args: ["HEAD"]
@@ -91,7 +91,6 @@ brew "pgpdump"
 brew "pinentry-mac"
 brew "pipx"
 brew "poppler"
-brew "portaudio"
 brew "prettier"
 brew "pwgen"
 brew "py2cairo"
@@ -103,6 +102,7 @@ brew "qwt"
 brew "ranger"
 brew "rename"
 brew "ripgrep"
+brew "scummvm", link: false
 brew "scummvm-tools"
 brew "socat"
 brew "starship"
@@ -168,12 +168,14 @@ cask "the-unarchiver"
 cask "tigervnc-viewer"
 cask "transmission"
 cask "vagrant"
+cask "virtualbox"
 cask "vlc"
 cask "wireshark"
 cask "xquartz"
 cask "yubico-yubikey-manager"
 cask "yubico-yubikey-personalization-gui"
 mas "Banktivity", id: 1480779512
+mas "Bear", id: 1091189122
 mas "Developer", id: 640199958
 mas "Exporter", id: 1099120373
 mas "GoodNotes", id: 1444383602
@@ -183,6 +185,7 @@ mas "Mactracker", id: 430255202
 mas "MahJong", id: 405503120
 mas "MailRaider", id: 558268579
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "NextDNS", id: 1464122853
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Radio", id: 552777084
