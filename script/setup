@@ -7,7 +7,7 @@ cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
 git submodule init && git submodule update
 
-mkdir -p $HOME/.config
+mkdir -p "$HOME/.config"
 
 [ $(uname -s) = "Darwin" ] && export MACOS=1 && export UNIX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
@@ -48,6 +48,7 @@ then
   fi
   SS_PKG="$HOME/.starship.tar.gz" 
   wget --quiet -O "$SS_PKG" "https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-musl.tar.gz"
+  mkdir -p "$HOME/bin"
   tar xzf "$SS_PKG" -C "$HOME/bin" && rm "$SS_PKG"
 fi
 
