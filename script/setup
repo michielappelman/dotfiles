@@ -9,6 +9,10 @@ git submodule init && git submodule update
 
 mkdir -p $HOME/.config
 
+[ $(uname -s) = "Darwin" ] && export MACOS=1 && export UNIX=1
+[ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
+uname -s | grep -q "_NT-" && export WINDOWS=1
+
 for DOTFILE in * config/*; do
   HOMEFILE="$HOME/.$DOTFILE"
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
@@ -27,3 +31,23 @@ for DOTFILE in * config/*; do
     ln -sv "$DIRFILE" "$HOMEFILE"
   fi
 done
+
+if [ $MACOS ]
+then
+  echo 'Now install brew:'
+  echo '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+  echo 'And install packages:'
+  echo 'brew bundle install'
+elif [ $LINUX ]
+then
+  if [ -x $HOME/bin/starship ]
+  then
+    echo 'Updating starship'
+  else
+    echo 'Installig starship'
+  fi
+  SS_PKG="$HOME/.starship.tar.gz" 
+  wget --quiet -O "$SS_PKG" "https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-musl.tar.gz"
+  tar xzf "$SS_PKG" -C "$HOME/bin" && rm "$SS_PKG"
+fi
+
