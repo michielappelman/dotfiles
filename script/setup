@@ -35,9 +35,8 @@ done
 if [ $MACOS ]
 then
   echo 'Now install brew:'
-  echo '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-  echo 'And install packages:'
-  echo 'brew bundle install'
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew bundle --quiet install
 elif [ $LINUX ]
 then
   if [ -x $HOME/bin/starship ]
