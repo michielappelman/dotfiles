@@ -197,8 +197,7 @@ vim.api.nvim_exec([[
 vim.api.nvim_set_keymap('n', 'Y', 'y$', {noremap = true})
 
 -- LSP settings
-local nvim_lsp = require 'lspconfig'
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local opts = {noremap = true, silent = true}
@@ -247,6 +246,7 @@ local on_attach = function(_, bufnr)
                               opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
+  -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f',
                                 "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -256,24 +256,24 @@ local on_attach = function(_, bufnr)
                                 "<cmd>lua vim.lsp.buf.range_formatting()<CR>",
                                 opts)
   end
+
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+    augroup lsp_document_highlight
+    autocmd! * <buffer>
+    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+    ]], false)
+  end
+
+  require"lsp_signature".on_attach({
+    bind = true,
+    floating_window = true,
+    handler_opts = {border = "single"}
+  })
 end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- Enable the following language servers
-local servers = {
-  "gopls", "clangd", "pyright", "rust_analyzer", "tsserver", "efm",
-  "sumneko_lua"
-}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {on_attach = on_attach, capabilities = capabilities}
-end
-
-local lspconfig = require('lspconfig')
-
-local luadev = require("lua-dev").setup({})
-lspconfig.sumneko_lua.setup(luadev)
 
 local markdownlint = {
   lintCommand = "markdownlint -s",
@@ -281,11 +281,47 @@ local markdownlint = {
   lintFormats = {"%f:%l:%c %m"}
 }
 
-lspconfig.efm.setup {
-  init_options = {documentFormatting = true, codeAction = false},
-  settings = {languages = {markdown = {markdownlint}}},
-  filetypes = {"markdown"}
-}
+-- config that activates keymaps and enables snippet support
+local function make_config()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  return {capabilities = capabilities, on_attach = on_attach}
+end
+
+-- lsp-install
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+
+  for _, server in pairs(servers) do
+    local config = make_config()
+
+    if server == "efm" then
+      config = {
+        init_options = {documentFormatting = true, codeAction = false},
+        settings = {languages = {markdown = {markdownlint}}},
+        filetypes = {"markdown"},
+        on_attach = on_attach
+      }
+    end
+    if server == "lua" then
+      config = require("lua-dev").setup({})
+      config.on_attach = on_attach
+    end
+
+    require'lspconfig'[server].setup(config)
+  end
+end
+
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+
+require('lspkind').init({})
 
 -- Treesitter configuration
 require'nvim-treesitter.install'.compilers = {"clang"}

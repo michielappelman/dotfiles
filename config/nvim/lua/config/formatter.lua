@@ -20,14 +20,12 @@ require('formatter').setup({
     },
 
     rust = {
-      -- Rustfmt
       function()
         return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
       end
     },
 
     javascript = {
-      -- prettier
       function()
         return {
           exe = "prettier",
@@ -59,4 +57,3 @@ augroup FormatAutogroup
   autocmd BufWritePost *.go,*.c,*.cpp,*.js,*.rs,*.lua FormatWrite
 augroup END
 ]], true)
-
