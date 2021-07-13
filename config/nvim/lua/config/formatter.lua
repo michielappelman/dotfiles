@@ -59,3 +59,4 @@ augroup FormatAutogroup
   autocmd BufWritePost *.go,*.c,*.cpp,*.js,*.rs,*.lua FormatWrite
 augroup END
 ]], true)
+
