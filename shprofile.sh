@@ -28,6 +28,7 @@ alias curl="curl --proto-default https"
 # removes lines from $1 if they appear in $2
 function remove_lines_from() { grep -F -x -v -f $2 $1; }
 
+alias g="git"
 alias hs="history | grep"
 
 # Create a new Python virtual env
