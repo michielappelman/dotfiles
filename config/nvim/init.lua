@@ -59,6 +59,7 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Do not save when switching buffers
 vim.o.hidden = true
@@ -67,7 +68,19 @@ vim.o.hidden = true
 vim.o.mouse = 'a'
 
 -- Enable break indent
+vim.o.backup = false
+vim.o.swapfile = false
+
+vim.o.expandtab = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+
+vim.o.autoindent = true
+vim.o.smartindent = true
+
 vim.o.breakindent = true
+
+vim.wo.colorcolumn = "120"
 
 -- Save undo history
 vim.cmd [[set undofile]]
@@ -76,7 +89,6 @@ vim.cmd [[set undofile]]
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Decrease update time
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
@@ -192,15 +204,14 @@ local on_attach = function(client, bufnr)
   require"lsp_signature".on_attach({
     bind = true,
     floating_window = true,
+    fix_pos = true,
+    hint_enable = true,
+    hi_parameter = "Search",
     handler_opts = {border = "single"}
   })
 end
 
-local markdownlint = {
-  lintCommand = "markdownlint -s",
-  lintStdin = true,
-  lintFormats = {"%f:%l:%c %m"}
-}
+local markdownlint = {lintCommand = "markdownlint -s", lintStdin = true, lintFormats = {"%f:%l:%c %m"}}
 
 -- config that activates keymaps and enables snippet support
 local function make_config()
