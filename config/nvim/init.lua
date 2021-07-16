@@ -3,11 +3,9 @@ require('config.formatter')
 require('config.theme-line')
 
 -- Install packer
-local install_path = vim.fn.stdpath 'data' ..
-                         '/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' ..
-                     install_path)
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
 vim.api.nvim_exec([[
@@ -19,77 +17,37 @@ vim.api.nvim_exec([[
 
 local use = require('packer').use
 require('packer').startup(function()
-  use 'wbthomason/packer.nvim' -- Package manager
-  use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
-  -- UI to select things (files, grep results, open buffers...)
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
+  use 'wbthomason/packer.nvim'
+  use 'tpope/vim-commentary'
+  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
   use "ishan9299/nvim-solarized-lua"
   use "mhartington/formatter.nvim"
   use "folke/tokyonight.nvim"
-  -- For statusline
-  use {
-    'hoob3rt/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
-
-  -- Nvim Tree
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
-
-  -- Bufferline
-  use {
-    'akinsho/nvim-bufferline.lua',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
-
-  -- Git Signs
+  use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+  use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+  use {'akinsho/nvim-bufferline.lua', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
   use {
     'lewis6991/gitsigns.nvim',
     requires = {'nvim-lua/plenary.nvim'},
     config = function() require('gitsigns').setup() end
   }
-
-  -- which-key
-  use {
-    "folke/which-key.nvim",
-    config = function() require("which-key").setup {} end
-  }
-  -- Magit for Neovim
-  use {
-    'TimUntersberger/neogit',
-    requires = 'nvim-lua/plenary.nvim',
-    opt = false
-  }
-
-  -- Neovim motions on speed!
-  use {
-    "phaazon/hop.nvim",
-    config = function()
-      require("hop").setup {keys = 'neiotsradhgpfwjluymcxkbz'}
-    end
-  }
-
+  use {"folke/which-key.nvim", config = function() require("which-key").setup {} end}
+  use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', opt = false}
+  use {"phaazon/hop.nvim", config = function() require("hop").setup {keys = 'neiotsradhgpfwjluymcxkbz'} end}
   -- For showing the actual color of the hex value
   use "norcalli/nvim-colorizer.lua"
 
-  -- Highlight, edit, and navigate code using a fast incremental parsing library
   use 'nvim-treesitter/nvim-treesitter'
   use "p00f/nvim-ts-rainbow"
-  -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-textobjects'
 
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  use 'hrsh7th/nvim-compe' -- Autocompletion plugin
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-compe'
   use "kabouzeid/nvim-lspinstall"
   use "ray-x/lsp_signature.nvim"
   use "onsails/lspkind-nvim"
   use "kosayoda/nvim-lightbulb"
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'L3MON4D3/LuaSnip'
   use "folke/lua-dev.nvim"
 end)
 
@@ -128,10 +86,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Remap for dealing with word wrap
-vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'",
-                        {noremap = true, expr = true, silent = true})
-vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'",
-                        {noremap = true, expr = true, silent = true})
+vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {noremap = true, expr = true, silent = true})
+vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {noremap = true, expr = true, silent = true})
 
 -- Map blankline
 vim.g.indent_blankline_char = '┊'
@@ -152,37 +108,28 @@ require('gitsigns').setup {
 }
 
 -- Telescope
-require('telescope').setup {
-  defaults = {mappings = {i = {['<C-u>'] = false, ['<C-d>'] = false}}}
-}
+require('telescope').setup {defaults = {mappings = {i = {['<C-u>'] = false, ['<C-d>'] = false}}}}
 
 -- Add leader shortcuts
-vim.api.nvim_set_keymap('n', '<leader><space>',
-                        [[<cmd>lua require('telescope.builtin').buffers()<CR>]],
+vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]],
                         {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>sf',
                         [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]],
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>sb',
-                        [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
+vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>sh',
-                        [[<cmd>lua require('telescope.builtin').help_tags()<CR>]],
+vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]],
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>st',
-                        [[<cmd>lua require('telescope.builtin').tags()<CR>]],
+vim.api.nvim_set_keymap('n', '<leader>st', [[<cmd>lua require('telescope.builtin').tags()<CR>]],
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>sd',
-                        [[<cmd>lua require('telescope.builtin').grep_string()<CR>]],
+vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]],
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>sp',
-                        [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
+vim.api.nvim_set_keymap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
                         {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>so',
                         [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]],
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>?',
-                        [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],
+vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],
                         {noremap = true, silent = true})
 
 -- Highlight on yank
@@ -201,60 +148,34 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   local opts = {noremap = true, silent = true}
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD',
-                              '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd',
-                              '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',
-                              '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi',
-                              '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>',
-                              '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa',
-                              '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>',
-                              opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr',
-                              '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>',
-                              opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl',
-                              '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
-                              opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D',
-                              '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn',
-                              '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr',
-                              '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca',
-                              '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+                              '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>e',
-                              '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
-                              opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d',
-                              '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>',
-                              opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d',
-                              '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',
-                              opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q',
-                              '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',
-                              opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so',
-                              [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]],
-                              opts)
+                              [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f',
-                                "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
   if client.resolved_capabilities.document_range_formatting then
-    vim.api.nvim_buf_set_keymap(bufnr, 'v', '<space>f',
-                                "<cmd>lua vim.lsp.buf.range_formatting()<CR>",
-                                opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'v', '<space>f', "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
   -- Set autocommands conditional on server_capabilities
@@ -334,12 +255,7 @@ require('nvim-treesitter.configs').setup {
   autotag = {enable = true},
   incremental_selection = {
     enable = true,
-    keymaps = {
-      init_selection = 'gnn',
-      node_incremental = 'grn',
-      scope_incremental = 'grc',
-      node_decremental = 'grm'
-    }
+    keymaps = {init_selection = 'gnn', node_incremental = 'grn', scope_incremental = 'grc', node_decremental = 'grm'}
   },
   indent = {enable = true},
   textobjects = {
@@ -359,10 +275,7 @@ require('nvim-treesitter.configs').setup {
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {[']m'] = '@function.outer', [']]'] = '@class.outer'},
       goto_next_end = {[']M'] = '@function.outer', [']['] = '@class.outer'},
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer'
-      },
+      goto_previous_start = {['[m'] = '@function.outer', ['[['] = '@class.outer'},
       goto_previous_end = {['[M'] = '@function.outer', ['[]'] = '@class.outer'}
     }
   }
@@ -408,9 +321,7 @@ require('compe').setup {
 }
 
 -- Utility functions for compe and luasnip
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
+local t = function(str) return vim.api.nvim_replace_termcodes(str, true, true, true) end
 
 local check_back_space = function()
   local col = vim.fn.col '.' - 1
@@ -484,33 +395,22 @@ vim.api.nvim_set_keymap('', 't',
 --                         {})
 
 -- Function Keys Mapping
-vim.api.nvim_set_keymap('', '<F2>', [[<Esc>:NvimTreeToggle<CR>]],
-                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('', '<F2>', [[<Esc>:NvimTreeToggle<CR>]], {noremap = true, silent = true})
 -- vim.api.nvim_set_keymap('', '<F3>', [[<Esc>:LspTroubleToggle<CR>]],
 --                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap('', '<F4>', [[:set invnumber<CR>]],
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('', '<F5>', [[:Telescope<CR>]],
-                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('', '<F4>', [[:set invnumber<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap('', '<F5>', [[:Telescope<CR>]], {noremap = true, silent = true})
 
 -- Ctrl+s is binded to save file
-vim.api.nvim_set_keymap('n', '<C-s>', [[:w<CR>]],
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '<C-s>', [[<Esc>:w<CR>i]],
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', '<C-s>', [[<Esc>:w<CR>]],
-                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-s>', [[:w<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-s>', [[<Esc>:w<CR>i]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '<C-s>', [[<Esc>:w<CR>]], {noremap = true, silent = true})
 
 -- Ctrl+w is binded to save and close the buffer
-vim.api.nvim_set_keymap('n', '<C-w>', [[:bn | bd#<CR>]],
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('i', '<C-w>', [[<Esc>:bn | bd#<CR>]],
-                        {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', '<C-w>', [[<Esc>:bn | bd#<CR>]],
-                        {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<C-w>', [[:bn | bd#<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<C-w>', [[<Esc>:bn | bd#<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '<C-w>', [[<Esc>:bn | bd#<CR>]], {noremap = true, silent = true})
 
 -- Navigate between Tabs
-vim.api.nvim_set_keymap('n', ']b', '<cmd>BufferLineCycleNext<CR>',
-                        {silent = true, noremap = true})
-vim.api.nvim_set_keymap('n', '[b', '<cmd>BufferLineCyclePrev<CR>',
-                        {silent = true, noremap = true})
+vim.api.nvim_set_keymap('n', ']b', '<cmd>BufferLineCycleNext<CR>', {silent = true, noremap = true})
+vim.api.nvim_set_keymap('n', '[b', '<cmd>BufferLineCyclePrev<CR>', {silent = true, noremap = true})
