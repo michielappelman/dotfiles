@@ -5,6 +5,7 @@
 	username = mike
 [github]
 	user = michielappelman
+
 [push]
 	default = simple
 [core]
@@ -15,3 +16,11 @@
     co = checkout
     cob = checkout -b
     sw = !git checkout $(git branch -a --format '%(refname:short)' | sed 's~origin/~~' | sort | uniq | fzf)
+    st = status
+    br = branch -av
+    unstage = reset HEAD --
+    subup = submodule update --init
+    aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+
+[includeIf "gitdir/i:OneDrive - Cisco/"]
+    path = ~/.gitconfig-cisco
