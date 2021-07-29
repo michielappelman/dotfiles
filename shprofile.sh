@@ -21,15 +21,20 @@ alias sas="ssh-agent -a $SSH_AUTH_SOCK > /dev/null"
 alias sap="ssh-add ~/.ssh/personal_hosts_ed25519 ~/.ssh/personal_hosts_rsa"
 alias sak="ssh-add ~/.ssh/id_ecdsa_sk"
 
-## Functions
-# FROM http://cfenollosa.com/misc/tricks.txt
 alias pp="ps axuf | pager"
 alias curl="curl --proto-default https"
-# removes lines from $1 if they appear in $2
-function remove_lines_from() { grep -F -x -v -f $2 $1; }
-
 alias g="git"
 alias hs="history | grep"
+
+## Functions
+# removes lines from $1 if they appear in $2
+function remove_lines_from() { grep -F -x -v -f $2 $1; }
+function mkcd() { mkdir -p "$@" && cd "$1"; }
+function ..() { 
+  for i in $(seq 1 $1); do cd ..; done 
+}
+# fff cd on exit
+function f() { fff "$@"; cd "$(cat ~/.fff_d)"; }
 
 # Create a new Python virtual env
 function pynew() {
@@ -41,9 +46,6 @@ function pynew() {
   [ -e "requirements.txt" ] &&
   pip install -r requirements.txt
 }
-
-# fff cd on exit
-f() { fff "$@"; cd "$(cat ~/.fff_d)"; }
 
 ## Lazy Loading
 function l_pyenv() {
