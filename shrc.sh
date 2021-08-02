@@ -35,7 +35,7 @@ alias e="$EDITOR"
 if quiet_which bat
 then
   export BAT_THEME="ansi"
-  alias qat="bat --paging=never"
+  alias qat="bat --paging=never --force-colorization --style=plain"
 fi
 
 if quiet_which diff-so-fancy

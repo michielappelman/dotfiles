@@ -4,12 +4,21 @@ vim.g.solarized_statusline = 'low'
 
 -- Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
 vim.o.background = "light"
-vim.cmd [[colorscheme solarized-high]]
+
+require("github-theme").setup({
+  themeStyle = "light",
+  functionStyle = "italic",
+  sidebars = {"qf", "vista_kind", "terminal", "packer"}
+})
 
 require('lualine').setup {
-  options = {theme = 'solarized_light'},
+  options = {
+    theme = 'github',
+    icons_enabled = true,
+    section_separators = {"", ""},
+    component_separators = {"", ""}
+  },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch'},

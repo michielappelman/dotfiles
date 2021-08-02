@@ -18,9 +18,11 @@ vim.api.nvim_exec([[
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
+  use 'karb94/neoscroll.nvim'
   use 'tpope/vim-commentary'
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
   use "ishan9299/nvim-solarized-lua"
+  use 'projekt0n/github-nvim-theme'
   use "mhartington/formatter.nvim"
   use "folke/tokyonight.nvim"
   use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
@@ -50,6 +52,19 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip'
   use "folke/lua-dev.nvim"
 end)
+
+vim.opt_local.scrolloff = 0
+require('neoscroll').setup({
+  mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+  hide_cursor = true,
+  stop_eof = false,
+  use_local_scrolloff = false,
+  respect_scrolloff = false,
+  cursor_scrolls_alone = true,
+  easing_function = "cubic",
+  pre_hook = nil,
+  post_hook = nil
+})
 
 -- Incremental live completion
 vim.o.inccommand = 'nosplit'
