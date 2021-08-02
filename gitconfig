@@ -20,6 +20,7 @@
     br = branch -av
     unstage = reset HEAD --
     subup = submodule update --init
+    subpull = git submodule foreach git pull
     aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
 
 [includeIf "gitdir/i:OneDrive - Cisco/"]
