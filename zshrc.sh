@@ -18,6 +18,6 @@ source $HOME/.dotfiles/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $HOME/.dotfiles/plugins/zsh-z/zsh-z.plugin.zsh
 source $HOME/.dotfiles/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-bindkey -M menuselect $key[Return] accept-line
+bindkey -M menuselect $key[Return] .accept-line
 
 eval "$(starship init zsh)"
