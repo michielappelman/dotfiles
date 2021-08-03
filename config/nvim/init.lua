@@ -21,10 +21,8 @@ require('packer').startup(function()
   use "ishan9299/nvim-solarized-lua"
   use 'projekt0n/github-nvim-theme'
   use "mhartington/formatter.nvim"
-  use "folke/tokyonight.nvim"
   use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
   use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
-  -- use {'akinsho/nvim-bufferline.lua', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
   use {
     'lewis6991/gitsigns.nvim',
     requires = {'nvim-lua/plenary.nvim'},
@@ -33,7 +31,6 @@ require('packer').startup(function()
   use {"folke/which-key.nvim", config = function() require("which-key").setup {} end}
   use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', opt = false}
   use {"phaazon/hop.nvim", config = function() require("hop").setup {keys = 'neiotsradhgpfwjluymcxkbz'} end}
-  -- For showing the actual color of the hex value
   use "norcalli/nvim-colorizer.lua"
 
   use 'nvim-treesitter/nvim-treesitter'
