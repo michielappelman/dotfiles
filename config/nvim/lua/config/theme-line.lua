@@ -1,16 +1,7 @@
-vim.g.solarized_italics = 1
-vim.g.solarized_visibility = 'low'
-vim.g.solarized_statusline = 'low'
-
--- Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.o.background = "light"
 
-require("github-theme").setup({
-  themeStyle = "light",
-  functionStyle = "italic",
-  sidebars = {"qf", "vista_kind", "terminal", "packer"}
-})
+require("github-theme").setup({themeStyle = "light", functionStyle = "italic", sidebars = {"terminal", "packer"}})
 
 require('lualine').setup {
   options = {
@@ -29,7 +20,17 @@ require('lualine').setup {
   }
 }
 
--- Setup Tab bar
-require'bufferline'.setup {
-  options = {enforce_regular_tabs = true, always_show_bufferline = true, sort_by = 'extension'}
-}
+vim.g.bufferline = {letters = 'ntserioalpufywmvckx'}
+
+vim.opt_local.scrolloff = 0
+require('neoscroll').setup({
+  mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+  hide_cursor = true,
+  stop_eof = false,
+  use_local_scrolloff = false,
+  respect_scrolloff = false,
+  cursor_scrolls_alone = true,
+  easing_function = "cubic",
+  pre_hook = nil,
+  post_hook = nil
+})
