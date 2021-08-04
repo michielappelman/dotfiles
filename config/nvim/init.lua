@@ -86,6 +86,7 @@ require("neogit").setup({
 vim.g.nvim_tree_width = 25
 vim.g.nvim_tree_auto_open = 1
 vim.g.nvim_tree_auto_close = 1
+vim.g.nvim_tree_auto_ignore_ft = {'markdown'}
 vim.g.nvim_tree_width_allow_resize = 1
 vim.g.nvim_tree_ignore = {'.git', '.DS_Store', 'node_modules', '.cache'}
 vim.g.nvim_tree_group_empty = 1
