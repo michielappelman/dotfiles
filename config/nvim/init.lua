@@ -29,7 +29,7 @@ require('packer').startup(function()
     config = function() require('gitsigns').setup() end
   }
   use {"folke/which-key.nvim", config = function() require("which-key").setup {} end}
-  use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', opt = false}
+  use {'TimUntersberger/neogit', requires = {'sindrets/diffview.nvim', 'nvim-lua/plenary.nvim'}, opt = false}
   use {"phaazon/hop.nvim", config = function() require("hop").setup {keys = 'neiotsradhgpfwjluymcxkbz'} end}
   use "norcalli/nvim-colorizer.lua"
 
@@ -75,6 +75,12 @@ require('gitsigns').setup {
 
 -- Telescope
 require('telescope').setup {defaults = {mappings = {i = {['<C-u>'] = false, ['<C-d>'] = false}}}}
+
+require("neogit").setup({
+  disable_commit_confirmation = true,
+  integrations = {diffview = true},
+  mappings = {status = {["B"] = "BranchPopup"}}
+})
 
 -- NvimTree
 vim.g.nvim_tree_width = 25
