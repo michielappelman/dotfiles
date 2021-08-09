@@ -1,5 +1,9 @@
 -- Treesitter configuration
-require'nvim-treesitter.install'.compilers = {"clang"}
+if vim.fn.has("mac") == 1 then
+  require'nvim-treesitter.install'.compilers = {"clang"}
+else
+  require'nvim-treesitter.install'.compilers = {"gcc"}
+end
 require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true -- false will disable the whole extension
