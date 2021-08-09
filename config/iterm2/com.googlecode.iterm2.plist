@@ -16,6 +16,8 @@
 	<integer>1</integer>
 	<key>Command</key>
 	<string>/Users/mappelma/Documents/sources/tz/tz</string>
+	<key>ConvertDosNewlines</key>
+	<true/>
 	<key>CopyLastNewline</key>
 	<true/>
 	<key>CopySelection</key>
@@ -292,6 +294,8 @@
 	<key>EnableDivisionView</key>
 	<true/>
 	<key>EnableProxyIcon</key>
+	<false/>
+	<key>EscapeShellCharsWithBackslash</key>
 	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
@@ -2429,6 +2433,12 @@
 	<integer>1</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
+	<key>PasteSpecialRegex</key>
+	<string>\t</string>
+	<key>PasteSpecialSubstitution</key>
+	<string>, </string>
+	<key>PasteSpecialUseRegexSubstitution</key>
+	<true/>
 	<key>PerPaneBackgroundImage</key>
 	<false/>
 	<key>PointerActions</key>
@@ -2484,6 +2494,8 @@
 	<integer>9</integer>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
+	<key>TabTransform</key>
+	<integer>0</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>TabsHaveCloseButton</key>
