@@ -9,6 +9,11 @@ vim.g.maplocalleader = ' '
 
 vim.o.pastetoggle = "<F7>"
 
+noremap('n', '<c-left>', '<C-W><C-H>')
+noremap('n', '<c-down>', '<C-W><C-J>')
+noremap('n', '<c-up>', '<C-W><C-K>')
+noremap('n', '<c-right>', '<C-W><C-L>')
+
 -- Some cool remaps thanks to Primeagen: https://youtu.be/hSHATqh8svM
 noremap('n', 'n', 'nzz')
 noremap('n', 'N', 'Nzz')
@@ -40,8 +45,6 @@ noremap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hin
 
 -- Function Keys Mapping
 noremap('', '<F2>', [[<Esc>:NvimTreeToggle<CR>]])
--- noremap('', '<F3>', [[<Esc>:LspTroubleToggle<CR>]])
-noremap('', '<F3>', [[<Esc>:LspTroubleToggle<CR>]])
 noremap('', '<F5>', [[:Telescope<CR>]])
 
 -- Ctrl+s is binded to save file

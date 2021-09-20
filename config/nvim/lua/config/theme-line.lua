@@ -1,11 +1,15 @@
 vim.o.termguicolors = true
-vim.o.background = "light"
 
-require("github-theme").setup({themeStyle = "light", functionStyle = "italic", sidebars = {"terminal", "packer"}})
+-- Example config in Lua
+vim.g.tokyonight_style = "storm"
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
+
+vim.cmd [[colorscheme tokyonight]]
 
 require('lualine').setup {
   options = {
-    theme = 'github',
+    theme = 'tokyonight',
     icons_enabled = true,
     section_separators = {"", ""},
     component_separators = {"", ""}
@@ -22,15 +26,20 @@ require('lualine').setup {
 
 vim.g.bufferline = {letters = 'ntserioalpufywmvckx'}
 
-vim.opt_local.scrolloff = 0
-require('neoscroll').setup({
-  mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-  hide_cursor = true,
-  stop_eof = false,
-  use_local_scrolloff = false,
-  respect_scrolloff = false,
-  cursor_scrolls_alone = true,
-  easing_function = "cubic",
-  pre_hook = nil,
-  post_hook = nil
-})
+-- Map blankline
+require("indent_blankline").setup {
+  char = "│",
+  show_first_indent_level = true,
+  filetype_exclude = {
+    "startify", "dashboard", "dotooagenda", "log", "fugitive", "gitcommit", "packer", "vimwiki", "markdown", "json",
+    "txt", "vista", "help", "todoist", "NvimTree", "peekaboo", "git", "TelescopePrompt", "undotree",
+    "flutterToolsOutline", "" -- for all buffers without a file type
+  },
+  buftype_exclude = {"terminal", "nofile"},
+  show_trailing_blankline_indent = false,
+  show_current_context = true,
+  context_patterns = {
+    "class", "function", "method", "block", "list_literal", "selector", "^if", "^table", "if_statement", "while", "for",
+    "type", "var", "import"
+  }
+}
