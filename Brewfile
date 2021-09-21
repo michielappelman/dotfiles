@@ -78,7 +78,7 @@ brew "mercurial"
 brew "mosh"
 brew "msgpack"
 brew "mtr"
-brew "neovim"
+brew "neovim", args: ["HEAD"]
 brew "nmap"
 brew "openblas"
 brew "numpy"
@@ -105,6 +105,7 @@ brew "scummvm", link: false
 brew "scummvm-tools"
 brew "socat"
 brew "starship"
+brew "stow"
 brew "swig"
 brew "switchaudio-osx"
 brew "tarsnap"
@@ -147,6 +148,7 @@ cask "firefox"
 cask "flux"
 cask "font-fira-code"
 cask "gimp"
+cask "google-chrome"
 cask "hammerspoon"
 cask "handbrake"
 cask "istat-menus"
@@ -154,6 +156,7 @@ cask "iterm2"
 cask "karabiner-elements"
 cask "kobo"
 cask "macs-fan-control"
+cask "microsoft-auto-update"
 cask "ngrok"
 cask "obsidian"
 cask "omnidisksweeper"
@@ -161,6 +164,7 @@ cask "panic-unison"
 cask "qlmarkdown"
 cask "rectangle"
 cask "scummvm"
+cask "skype-for-business"
 cask "sound-blaster-play3"
 cask "sublime-text"
 cask "table-tool"
@@ -177,11 +181,13 @@ cask "wireshark"
 cask "xquartz"
 cask "yubico-yubikey-manager"
 cask "yubico-yubikey-personalization-gui"
+cask "zoom"
 mas "Banktivity", id: 1480779512
 mas "Bear", id: 1091189122
 mas "Developer", id: 640199958
 mas "Exporter", id: 1099120373
 mas "GoodNotes", id: 1444383602
+mas "Home Assistant", id: 1099568401
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
