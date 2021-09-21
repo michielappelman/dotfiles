@@ -25,6 +25,4 @@ source $HOME/.dotfiles/plugins/zsh-z/zsh-z.plugin.zsh
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=249'
 
-bindkey -M menuselect $key[Return] .accept-line
-
 eval "$(starship init zsh)"
