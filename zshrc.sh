@@ -4,15 +4,14 @@ source ~/.shrc
 
 # Use vi mode
 bindkey -v
-export KEYTIMEOUT=1
 
 export HISTFILE=~/.zsh_history
 
-setopt hist_find_no_dups
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
 setopt hist_reduce_blanks
-setopt share_history
+setopt inc_append_history
 
-HIST_STAMPS="dd.mm.yyyy"
 DISABLE_UPDATE_PROMPT=true
 
 zstyle ':autocomplete:*' recent-dirs zsh-z

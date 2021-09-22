@@ -5,7 +5,7 @@
 DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
-git submodule init && git submodule update
+git submodule update --init
 
 mkdir -p "$HOME/.config"
 
@@ -37,17 +37,19 @@ then
   echo 'Now install brew:'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew bundle --quiet install
+  SS_PLATFORM="apple-darwin"
 elif [ $LINUX ]
 then
-  if [ -x $HOME/bin/starship ]
-  then
-    echo 'Updating starship'
-  else
-    echo 'Installig starship'
-  fi
-  SS_PKG="$HOME/.starship.tar.gz" 
-  wget --quiet -O "$SS_PKG" "https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-musl.tar.gz"
-  mkdir -p "$HOME/bin"
-  tar xzf "$SS_PKG" -C "$HOME/bin" && rm "$SS_PKG"
+  SS_PLATFORM="unknown-linux-musl"
 fi
 
+if [ -x $HOME/bin/starship ]
+then
+  echo 'Updating starship'
+else
+  echo 'Installig starship'
+fi
+SS_PKG="$HOME/.starship.tar.gz" 
+wget --quiet -O "$SS_PKG" "https://github.com/starship/starship/releases/latest/download/starship-x86_64-${SS_PLATFORM}.tar.gz"
+mkdir -p "$HOME/bin"
+tar xzf "$SS_PKG" -C "$HOME/bin" && rm "$SS_PKG"

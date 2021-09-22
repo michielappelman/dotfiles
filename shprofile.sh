@@ -24,9 +24,9 @@ alias sak="ssh-add ~/.ssh/id_ecdsa_sk"
 alias pp="ps axuf | pager"
 alias curl="curl --proto-default https"
 alias g="git"
-alias hs="history | grep"
 
 ## Functions
+function hs() { grep $1 "$HISTFILE" }
 # removes lines from $1 if they appear in $2
 function remove_lines_from() { grep -F -x -v -f $2 $1; }
 function mkcd() { mkdir -p "$@" && cd "$1"; }
