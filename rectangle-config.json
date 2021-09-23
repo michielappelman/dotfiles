@@ -1,7 +1,7 @@
 {
   "defaults" : {
-    "almostMaximizeWidth" : {
-      "float" : 0
+    "centerHalfCycles" : {
+      "int" : 0
     },
     "curtainChangeSize" : {
       "int" : 0
@@ -9,13 +9,10 @@
     "allowAnyShortcut" : {
       "bool" : false
     },
+    "almostMaximizeWidth" : {
+      "float" : 0
+    },
     "ignoredSnapAreas" : {
-      "int" : 0
-    },
-    "retainSizeNextPrevDisplay" : {
-      "int" : 0
-    },
-    "centerHalfCycles" : {
       "int" : 0
     },
     "screenEdgeGapBottom" : {
@@ -30,17 +27,23 @@
     "SUEnableAutomaticChecks" : {
       "bool" : true
     },
+    "todoSidebarWidth" : {
+      "float" : 400
+    },
     "gapSize" : {
       "float" : 0
+    },
+    "specifiedHeight" : {
+      "float" : 1050
     },
     "disabledApps" : {
 
     },
-    "todoSidebarWidth" : {
-      "float" : 400
-    },
     "todoApplication" : {
       "string" : "md.obsidian"
+    },
+    "fullIgnoreBundleIds" : {
+
     },
     "centeredDirectionalMove" : {
       "int" : 0
@@ -57,11 +60,23 @@
     "altThirdCycle" : {
       "int" : 0
     },
+    "moveCursorAcrossDisplays" : {
+      "int" : 0
+    },
     "launchOnLogin" : {
       "bool" : true
     },
     "hideMenubarIcon" : {
       "bool" : false
+    },
+    "traverseSingleScreen" : {
+      "int" : 0
+    },
+    "minimumWindowHeight" : {
+      "float" : 0
+    },
+    "specifiedWidth" : {
+      "float" : 1680
     },
     "footprintFade" : {
       "int" : 0
@@ -69,14 +84,11 @@
     "snapEdgeMarginBottom" : {
       "float" : 5
     },
-    "minimumWindowHeight" : {
-      "float" : 0
-    },
-    "traverseSingleScreen" : {
-      "int" : 0
-    },
     "screenEdgeGapRight" : {
       "float" : 0
+    },
+    "notifiedOfProblemApps" : {
+      "bool" : false
     },
     "screenEdgeGapLeft" : {
       "float" : 0
@@ -114,11 +126,14 @@
     "footprintColor" : {
 
     },
-    "footprintAlpha" : {
-      "float" : 0.30000001192092896
-    },
     "minimumWindowWidth" : {
       "float" : 0
+    },
+    "attemptMatchOnNextPrevDisplay" : {
+      "int" : 0
+    },
+    "footprintAlpha" : {
+      "float" : 0.30000001192092896
     },
     "almostMaximizeHeight" : {
       "float" : 0
@@ -159,12 +174,16 @@
       "keyCode" : 37,
       "modifierFlags" : 1835008
     },
-    "bottomHalf" : {
-      "keyCode" : 38,
-      "modifierFlags" : 1835008
-    },
     "topLeft" : {
       "keyCode" : 35,
+      "modifierFlags" : 1835008
+    },
+    "topCenterSixth" : {
+      "keyCode" : 13,
+      "modifierFlags" : 1835008
+    },
+    "bottomHalf" : {
+      "keyCode" : 38,
       "modifierFlags" : 1835008
     },
     "bottomLeft" : {
@@ -189,5 +208,5 @@
     }
   },
   "bundleId" : "com.knollsoft.Rectangle",
-  "version" : "49"
+  "version" : "53"
 }
