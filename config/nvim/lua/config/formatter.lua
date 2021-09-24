@@ -6,11 +6,12 @@ require('formatter').setup({
     c = {function() return {exe = "clang-format", stdin = true} end},
     cpp = {function() return {exe = "clang-format", stdin = true} end},
     rust = {function() return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true} end},
-    markdown = {
+    markdown = {function() return {exe = "markdownlint", args = {'-f'}, stdin = false} end},
+    json = {
       function()
         return {
           exe = "prettier",
-          args = {'--parser markdown', '--stdin-filepath "', vim.api.nvim_buf_get_name(0), '"'},
+          args = {'--parser json', '--stdin-filepath "', vim.api.nvim_buf_get_name(0), '"'},
           stdin = true
         }
       end
@@ -40,6 +41,6 @@ require('formatter').setup({
 vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.go,*.c,*.cpp,*.js,*.rs,*.lua,*.md FormatWrite
+  autocmd BufWritePost *.go,*.c,*.cpp,*.js,*.rs,*.lua, FormatWrite
 augroup END
 ]], true)

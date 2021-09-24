@@ -9,6 +9,8 @@ vim.g.maplocalleader = ' '
 
 vim.o.pastetoggle = "<F7>"
 
+noremap('n', '<leader>f', ':Format<CR>')
+
 noremap('n', '<c-left>', '<C-W><C-H>')
 noremap('n', '<c-down>', '<C-W><C-J>')
 noremap('n', '<c-up>', '<C-W><C-K>')
