@@ -34,22 +34,17 @@ done
 
 if [ $MACOS ]
 then
-  echo 'Now install brew:'
+  echo 'Installing brew:'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew bundle --quiet install
   SS_PLATFORM="apple-darwin"
 elif [ $LINUX ]
 then
+  echo 'Installig starship'
   SS_PLATFORM="unknown-linux-musl"
+  SS_PKG="$HOME/.starship.tar.gz" 
+  wget --quiet -O "$SS_PKG" "https://github.com/starship/starship/releases/latest/download/starship-x86_64-${SS_PLATFORM}.tar.gz"
+  mkdir -p "$HOME/bin"
+  tar xzf "$SS_PKG" -C "$HOME/bin" && rm "$SS_PKG"
 fi
 
-if [ -x $HOME/bin/starship ]
-then
-  echo 'Updating starship'
-else
-  echo 'Installig starship'
-fi
-SS_PKG="$HOME/.starship.tar.gz" 
-wget --quiet -O "$SS_PKG" "https://github.com/starship/starship/releases/latest/download/starship-x86_64-${SS_PLATFORM}.tar.gz"
-mkdir -p "$HOME/bin"
-tar xzf "$SS_PKG" -C "$HOME/bin" && rm "$SS_PKG"
