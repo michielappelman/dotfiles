@@ -19,7 +19,7 @@ require('packer').startup(function()
   use {
     'TimUntersberger/neogit',
     requires = {'sindrets/diffview.nvim', 'nvim-lua/plenary.nvim'},
-    opt = true,
+    opt = false,
     config = function()
       require("neogit").setup({disable_commit_confirmation = true, integrations = {diffview = true}})
     end
@@ -27,7 +27,23 @@ require('packer').startup(function()
 
   use 'folke/tokyonight.nvim'
 
-  use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons', opt = false}}
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require'nvim-tree'.setup {
+        open_on_setup = true,
+        update_cwd = true,
+        ignore_ft_on_setup = {'markdown'},
+        view = {auto_resize = true, width = 25, side = 'left'},
+        update_focused_file = {
+          enable = true,
+          update_cwd = true,
+          ignore_list = {'.git', '.DS_Store', 'node_modules', '.cache'}
+        }
+      }
+    end
+  }
   use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = false}}
   use {'romgrk/barbar.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
@@ -52,15 +68,3 @@ require('config.mappings')
 require('config.theme-line')
 require('config.treesitter')
 require('config.formatter')
-
--- NvimTree
-vim.g.nvim_tree_width = 25
-vim.g.nvim_tree_auto_open = 1
-vim.g.nvim_tree_auto_close = 1
-vim.g.nvim_tree_auto_ignore_ft = {'markdown'}
-vim.g.nvim_tree_width_allow_resize = 1
-vim.g.nvim_tree_ignore = {'.git', '.DS_Store', 'node_modules', '.cache'}
-vim.g.nvim_tree_group_empty = 1
-vim.g.nvim_tree_highlight_opened_files = 1
-vim.g.nvim_tree_add_trailing = 1
-vim.g.nvim_tree_git_hl = 1
