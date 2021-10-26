@@ -33,7 +33,7 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryCli
 
 # Dock Settings
 defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock show-recents -bool true
+defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock tilesize -int 50
 defaults write com.apple.dock largesize -int 69
 defaults write com.apple.dock expose-animation-duration -float 0.1
