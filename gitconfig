@@ -1,33 +1,33 @@
 [user]
-	email = michiel@appelman.se
-	name = Michiel Appelman
+  email = michiel@appelman.se
+  name = Michiel Appelman
 [shell]
-	username = mike
+  username = mike
 [github]
-	user = michielappelman
+  user = michielappelman
 
 [includeIf "gitdir/i:OneDrive - Cisco/"]
-    path = ~/.gitconfig-cisco
+  path = ~/.gitconfig-cisco
 
 [core]
-    excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 
 [pull]
-	rebase = true
+  rebase = true
 [rebase]
-	autoStash = true
+  autoStash = true
 [push]
-	default = simple
+  default = simple
 
 [alias]
-    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    co = checkout
-    cob = checkout -b
-    sw = !git checkout $(git branch -a --format '%(refname:short)' | sed 's~origin/~~' | sort | uniq | fzf)
-    st = status
-    br = branch -av
-    unstage = reset HEAD --
-    subup = submodule update --init
-    subpull = submodule foreach git pull
-    aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+  l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  co = checkout
+  cob = checkout -b
+  sw = !git checkout $(git branch -a --format '%(refname:short)' | sed 's~origin/~~' | sort | uniq | fzf)
+  st = status
+  br = branch -av
+  unstage = reset HEAD --
+  subup = submodule update --init
+  subpull = submodule foreach git pull
+  aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
