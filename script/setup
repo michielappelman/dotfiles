@@ -34,6 +34,9 @@ done
 
 if [ $MACOS ]
 then
+  # Config settings
+  source $HOME/.macos-config.sh
+
   echo 'Installing brew:'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew bundle --quiet install
