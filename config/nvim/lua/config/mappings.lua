@@ -32,19 +32,6 @@ noremap('i', '?', '?<c-g>u')
 noremap('i', ':', ':<c-g>u')
 noremap('i', '<cr>', '<cr><c-g>u')
 
--- Hop mappings
-noremap('', '<leader>w',
-        "<cmd>lua require'hop'.hint_words({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>")
-noremap('', '<leader>b',
-        "<cmd>lua require'hop'.hint_words({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>")
-
--- Hop has not fixed behaviour yet with regards to including or excluding the character to hop to.
--- Issue: https://github.com/phaazon/hop.nvim/issues/82
--- noremap('', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>")
-noremap('', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>")
-noremap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>")
--- noremap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = re'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>")
-
 -- Function Keys Mapping
 noremap('', '<F2>', [[<Esc>:NvimTreeToggle<CR>]])
 noremap('', '<F5>', [[:Telescope<CR>]])
