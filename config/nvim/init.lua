@@ -48,7 +48,7 @@ require('packer').startup(function()
   use {'romgrk/barbar.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
 
-  use 'ggandor/lightspeed.nvim'
+  use {'ggandor/lightspeed.nvim', requires = {'tpope/vim-repeat'}}
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
   use {"folke/which-key.nvim", config = function() require("which-key").setup {} end}
