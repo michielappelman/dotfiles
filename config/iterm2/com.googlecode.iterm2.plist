@@ -2559,9 +2559,9 @@
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenBookmark</key>
-	<true/>
-	<key>OpenNoWindowsAtStartup</key>
 	<false/>
+	<key>OpenNoWindowsAtStartup</key>
+	<true/>
 	<key>OpenTmuxDashboardIfHiddenWindows</key>
 	<true/>
 	<key>OpenTmuxWindowsIn</key>
