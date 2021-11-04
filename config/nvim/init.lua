@@ -51,11 +51,15 @@ require('packer').startup(function()
   use {'ggandor/lightspeed.nvim', requires = {'tpope/vim-repeat'}}
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
-  use {"folke/which-key.nvim", config = function() require("which-key").setup {} end}
+  use {'folke/which-key.nvim', config = function() require('which-key').setup {} end}
 
   use 'lukas-reineke/indent-blankline.nvim'
   use 'mhartington/formatter.nvim'
-  use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {'nvim-lua/plenary.nvim'},
+    config = function() require('gitsigns').setup() end
+  }
 
   use 'nvim-treesitter/nvim-treesitter'
   use "p00f/nvim-ts-rainbow"
