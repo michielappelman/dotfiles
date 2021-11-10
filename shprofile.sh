@@ -10,7 +10,7 @@ export LANG=en_US.UTF-8
 
 [ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
 [ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
-if [ $MACOS = 1 ] 
+if [[ $MACOS == 1 ]]
 then
   export HOMEBREW_NO_AUTO_UPDATE=1
 fi
