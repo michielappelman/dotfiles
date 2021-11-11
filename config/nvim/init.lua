@@ -48,7 +48,20 @@ require('packer').startup(function()
   use {'romgrk/barbar.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
 
-  use {'ggandor/lightspeed.nvim', requires = {'tpope/vim-repeat'}}
+  use {
+    'ggandor/lightspeed.nvim',
+    requires = {'tpope/vim-repeat'},
+    config = function()
+      require'lightspeed'.setup {
+        jump_to_first_match = true,
+        jump_on_partial_input_safety_timeout = 400,
+        exit_after_idle_msecs = {labeled = 1000, unlabeled = 2500},
+        match_only_the_start_of_same_char_seqs = true,
+        limit_ft_matches = 6,
+        substitute_chars = {['\r'] = '¬'}
+      }
+    end
+  }
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
   use {'folke/which-key.nvim', config = function() require('which-key').setup {} end}
