@@ -42,7 +42,7 @@ noremap('i', '<C-s>', [[<Esc>:w<CR>i]])
 noremap('v', '<C-s>', [[<Esc>:w<CR>]])
 
 -- Buffer/Tab navigation
-noremap('n', '<C-w>', ':BufferClose<CR>')
+noremap('n', '<C-q>', ':BufferClose<CR>')
 noremap('n', '\\b', ':BufferPick<CR>')
 noremap('n', '[b', ':BufferPrevious<CR>')
 noremap('n', ']b', ':BufferNext<CR>')
