@@ -2,8 +2,8 @@
 source ~/.zprofile
 source ~/.shrc
 
-# Use vi mode
 bindkey -v
+bindkey "^R" history-incremental-search-backward
 
 export HISTFILE=~/.zsh_history
 
@@ -12,9 +12,6 @@ setopt hist_ignore_dups
 setopt hist_reduce_blanks
 setopt inc_append_history
 
-DISABLE_UPDATE_PROMPT=true
-
-zstyle ':autocomplete:*' recent-dirs zsh-z
 zstyle ':autocomplete:*' widget-style menu-select
 zstyle ':autocomplete:*' ignored-input '..##'
 
@@ -23,5 +20,6 @@ source $HOME/.dotfiles/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $HOME/.dotfiles/plugins/zsh-z/zsh-z.plugin.zsh
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=249'
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 eval "$(starship init zsh)"
