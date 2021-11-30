@@ -16,6 +16,9 @@ vim.api.nvim_exec([[
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
+  use 'folke/tokyonight.nvim'
+
+  -- Git
   use {
     'TimUntersberger/neogit',
     requires = {'sindrets/diffview.nvim', 'nvim-lua/plenary.nvim'},
@@ -24,8 +27,11 @@ require('packer').startup(function()
       require("neogit").setup({disable_commit_confirmation = true, integrations = {diffview = true}})
     end
   }
-
-  use 'folke/tokyonight.nvim'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {'nvim-lua/plenary.nvim'},
+    config = function() require('gitsigns').setup() end
+  }
 
   use {
     'kyazdani42/nvim-tree.lua',
@@ -68,11 +74,18 @@ require('packer').startup(function()
 
   use 'lukas-reineke/indent-blankline.nvim'
   use 'mhartington/formatter.nvim'
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {'nvim-lua/plenary.nvim'},
-    config = function() require('gitsigns').setup() end
-  }
+
+  -- Snippets
+  use({'L3MON4D3/luasnip', requires = {'rafamadriz/friendly-snippets'}})
+
+  -- Completion
+  use 'hrsh7th/nvim-cmp'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'lukas-reineke/cmp-rg'
+  use 'onsails/lspkind-nvim'
 
   use 'nvim-treesitter/nvim-treesitter'
   use "p00f/nvim-ts-rainbow"
@@ -83,5 +96,6 @@ end)
 require('config.settings')
 require('config.mappings')
 require('config.theme-line')
+require('config.completion')
 require('config.treesitter')
 require('config.formatter')
