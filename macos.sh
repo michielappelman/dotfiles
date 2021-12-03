@@ -65,7 +65,7 @@ chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 killall Finder
 
 # Screenshot Settings
-defaults write com.apple.screencapture "type" -string "jpg"
+defaults write com.apple.screencapture "type" -string "png"
 defaults write com.apple.screencapture "location" -string "~/OneDrive - Cisco/Screenshots"
 defaults write com.apple.screencapture "disable-shadow" -bool true
 killall SystemUIServer
