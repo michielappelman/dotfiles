@@ -75,8 +75,11 @@ require('packer').startup(function()
   use 'lukas-reineke/indent-blankline.nvim'
   use 'mhartington/formatter.nvim'
 
+  -- markdown
+  use {'plasticboy/vim-markdown', requires = 'godlygeek/tabular'}
+
   -- Snippets
-  use({'L3MON4D3/luasnip', requires = {'rafamadriz/friendly-snippets'}})
+  use {'L3MON4D3/luasnip', requires = {'rafamadriz/friendly-snippets'}}
 
   -- Completion
   use 'hrsh7th/nvim-cmp'
