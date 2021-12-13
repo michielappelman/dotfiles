@@ -59,8 +59,6 @@ require('packer').startup(function()
     requires = {'tpope/vim-repeat'},
     config = function()
       require'lightspeed'.setup {
-        jump_to_first_match = true,
-        jump_on_partial_input_safety_timeout = 400,
         exit_after_idle_msecs = {labeled = 1000, unlabeled = 2500},
         match_only_the_start_of_same_char_seqs = true,
         limit_ft_matches = 6,
