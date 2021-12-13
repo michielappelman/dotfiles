@@ -17,6 +17,7 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'folke/tokyonight.nvim'
+  use {"folke/twilight.nvim", config = function() require("twilight").setup {} end}
 
   -- Git
   use {
