@@ -80,9 +80,14 @@ require('packer').startup(function()
   -- Snippets
   use {'L3MON4D3/luasnip', requires = {'rafamadriz/friendly-snippets'}}
 
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  use "b0o/schemastore.nvim"
+
   -- Completion
   use 'hrsh7th/nvim-cmp'
   use 'saadparwaiz1/cmp_luasnip'
+  use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-nvim-lua'
@@ -100,4 +105,5 @@ require('config.mappings')
 require('config.theme-line')
 require('config.completion')
 require('config.treesitter')
+require('config.lsp')
 require('config.formatter')
