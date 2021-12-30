@@ -5,6 +5,8 @@
   username = mike
 [github]
   user = michielappelman
+  [gpg]
+  format = ssh
 
 [includeIf "gitdir/i:OneDrive - Cisco/"]
   path = ~/.gitconfig-cisco
