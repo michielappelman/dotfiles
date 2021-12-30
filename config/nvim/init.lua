@@ -67,7 +67,7 @@ require('packer').startup(function()
       }
     end
   }
-  use 'tpope/vim-commentary'
+  use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end}
   use 'tpope/vim-surround'
   use {'folke/which-key.nvim', config = function() require('which-key').setup {} end}
 
