@@ -1,3 +1,4 @@
+tap "cloudflare/cloudflare"
 tap "gitea/tap", "https://gitea.com/gitea/homebrew-gitea"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -15,12 +16,12 @@ brew "autoconf"
 brew "automake"
 brew "bat"
 brew "berkeley-db"
-brew "jemalloc"
 brew "node"
 brew "bitwarden-cli"
 brew "boost"
 brew "gettext"
 brew "cmake"
+brew "coreutils"
 brew "cppunit"
 brew "csvkit"
 brew "curl"
@@ -46,6 +47,7 @@ brew "gnupg"
 brew "pango"
 brew "gnuplot"
 brew "go"
+brew "gopls"
 brew "gpsbabel"
 brew "graphene"
 brew "gsl"
@@ -62,13 +64,15 @@ brew "imagemagick"
 brew "innoextract"
 brew "iperf3"
 brew "irssi"
+brew "jemalloc"
 brew "jq"
 brew "libfido2"
 brew "libssh"
 brew "unibilium"
 brew "libtermkey"
-brew "libvterm"
+brew "libvterm", link: false
 brew "libyaml"
+brew "lua-language-server"
 brew "luajit"
 brew "lynx"
 brew "markdownlint-cli"
@@ -96,6 +100,7 @@ brew "py2cairo"
 brew "pyenv"
 brew "pyenv-virtualenv"
 brew "pyenv-virtualenvwrapper"
+brew "pyright"
 brew "qemu"
 brew "qwt"
 brew "ranger"
@@ -125,6 +130,8 @@ brew "yafc"
 brew "youtube-dl"
 brew "zsh"
 brew "zsh-completions"
+brew "cloudflare/cloudflare/cloudflared"
+brew "gitea/tap/tea"
 brew "jakehilborn/jakehilborn/displayplacer"
 brew "teamookla/speedtest/speedtest"
 cask "affinity-photo"
@@ -154,7 +161,9 @@ cask "handbrake"
 cask "istat-menus"
 cask "iterm2"
 cask "karabiner-elements"
+cask "keycastr"
 cask "kobo"
+cask "librewolf"
 cask "macs-fan-control"
 cask "microsoft-auto-update"
 cask "ngrok"
@@ -182,25 +191,19 @@ cask "wireshark"
 cask "xquartz"
 cask "yubico-yubikey-manager"
 cask "yubico-yubikey-personalization-gui"
-cask "zoom"
 mas "Banktivity", id: 1480779512
 mas "Bear", id: 1091189122
-mas "Developer", id: 640199958
-mas "Exporter", id: 1099120373
 mas "GoodNotes", id: 1444383602
 mas "Home Assistant", id: 1099568401
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
-mas "MahJong", id: 405503120
 mas "MailRaider", id: 558268579
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "NextDNS", id: 1464122853
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Radio", id: 552777084
-mas "Snappy", id: 512617038
-mas "Time Out", id: 402592703
+mas "Table Tool", id: 1122008420
+mas "The Unarchiver", id: 425424353
 mas "VSD Viewer", id: 580788158
 mas "WireGuard", id: 1451685025
-mas "Xcode", id: 497799835
