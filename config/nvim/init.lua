@@ -25,7 +25,12 @@ require('packer').startup(function()
     requires = {'sindrets/diffview.nvim', 'nvim-lua/plenary.nvim'},
     opt = false,
     config = function()
-      require("neogit").setup({disable_commit_confirmation = true, integrations = {diffview = true}})
+      require("neogit").setup({
+        disable_hint = true,
+        disable_commit_confirmation = true,
+        disable_insert_on_commit = true,
+        integrations = {diffview = true}
+      })
     end
   }
   use {

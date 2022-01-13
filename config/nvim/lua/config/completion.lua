@@ -37,5 +37,7 @@ cmp.setup({
       end
     end
   },
-  sources = {{name = 'luasnip'}, {name = 'buffer'}, {name = 'path'}, {name = 'nvim_lua'}, {name = 'rg'}}
+  sources = {
+    {name = 'commit'}, {name = 'luasnip'}, {name = 'buffer'}, {name = 'path'}, {name = 'nvim_lua'}, {name = 'rg'}
+  }
 })
