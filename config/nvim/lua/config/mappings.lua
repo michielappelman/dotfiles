@@ -1,6 +1,7 @@
 -- Function remap
-local function noremap(mode, keys, command) vim.api
-    .nvim_set_keymap(mode, keys, command, {noremap = true, silent = true}) end
+local function noremap(mode, keys, command)
+  vim.api.nvim_set_keymap(mode, keys, command, {noremap = true, silent = true})
+end
 
 -- Remap space as leader key
 noremap('', '<Space>', '<Nop>')
@@ -48,15 +49,23 @@ noremap('n', '[b', ':BufferPrevious<CR>')
 noremap('n', ']b', ':BufferNext<CR>')
 
 -- Telescope Mappings
-noremap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]])
-noremap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]])
-noremap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]])
-noremap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]])
+noremap('n', '<leader><space>',
+        [[<cmd>lua require('telescope.builtin').buffers()<CR>]])
+noremap('n', '<leader>sf',
+        [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]])
+noremap('n', '<leader>sb',
+        [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]])
+noremap('n', '<leader>sh',
+        [[<cmd>lua require('telescope.builtin').help_tags()<CR>]])
 noremap('n', '<leader>st', [[<cmd>lua require('telescope.builtin').tags()<CR>]])
-noremap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]])
-noremap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]])
-noremap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]])
-noremap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
+noremap('n', '<leader>sd',
+        [[<cmd>lua require('telescope.builtin').grep_string()<CR>]])
+noremap('n', '<leader>sp',
+        [[<cmd>lua require('telescope.builtin').live_grep()<CR>]])
+noremap('n', '<leader>so',
+        [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]])
+noremap('n', '<leader>?',
+        [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
 
 -- Small Deletes also go into numbered registers
 -- based on: https://vi.stackexchange.com/questions/2493/can-i-make-vim-also-save-small-deletions-into-register-1/31321#31321

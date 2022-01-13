@@ -2,7 +2,10 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  fn.system({
+    'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path
+  })
   vim.cmd 'packadd packer.nvim'
 end
 
@@ -17,7 +20,10 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'folke/tokyonight.nvim'
-  use {"folke/twilight.nvim", config = function() require("twilight").setup {} end}
+  use {
+    "folke/twilight.nvim",
+    config = function() require("twilight").setup {} end
+  }
 
   -- Git
   use {
@@ -56,9 +62,15 @@ require('packer').startup(function()
       }
     end
   }
-  use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = false}}
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = false}
+  }
   use {'romgrk/barbar.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
-  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
 
   use {
     'ggandor/lightspeed.nvim',
@@ -72,9 +84,15 @@ require('packer').startup(function()
       }
     end
   }
-  use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end}
+  use {
+    'numToStr/Comment.nvim',
+    config = function() require('Comment').setup() end
+  }
   use 'tpope/vim-surround'
-  use {'folke/which-key.nvim', config = function() require('which-key').setup {} end}
+  use {
+    'folke/which-key.nvim',
+    config = function() require('which-key').setup {} end
+  }
 
   use 'lukas-reineke/indent-blankline.nvim'
   use 'mhartington/formatter.nvim'
