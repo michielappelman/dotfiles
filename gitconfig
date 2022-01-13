@@ -15,7 +15,6 @@
   excludesfile = ~/.gitignore
 [commit]
   verbose = true
-  template = ~/.git-commit-template
 
 [pull]
   rebase = true
