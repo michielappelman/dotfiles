@@ -46,6 +46,10 @@ require('packer').startup(function()
   }
 
   use {
+    "ahmedkhalf/project.nvim",
+    config = function() require("project_nvim").setup {} end
+  }
+  use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
@@ -121,6 +125,8 @@ require('packer').startup(function()
   use "p00f/nvim-ts-rainbow"
   use 'nvim-treesitter/nvim-treesitter-textobjects'
 end)
+
+require('telescope').load_extension('projects')
 
 -- -- Load external configs
 require('config.settings')
