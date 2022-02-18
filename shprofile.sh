@@ -72,3 +72,9 @@ function l_gcloud() {
         . '/Users/mappelma/Documents/sources/google-cloud-sdk/completion.zsh.inc'
     fi
 }
+
+function l_nvm() {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
