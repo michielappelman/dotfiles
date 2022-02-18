@@ -58,6 +58,7 @@ brew "highlight"
 brew "hping"
 brew "htop"
 brew "httpie"
+brew "hugo"
 brew "ical-buddy"
 brew "iftop"
 brew "imagemagick"
@@ -102,6 +103,7 @@ brew "pyenv-virtualenv"
 brew "pyenv-virtualenvwrapper"
 brew "pyright"
 brew "qemu"
+brew "qrencode"
 brew "qwt"
 brew "ranger"
 brew "rename"
@@ -111,6 +113,7 @@ brew "scummvm-tools"
 brew "socat"
 brew "starship"
 brew "stow"
+brew "svgbob"
 brew "swig"
 brew "switchaudio-osx"
 brew "tarsnap"
@@ -155,8 +158,10 @@ cask "element"
 cask "firefox"
 cask "flux"
 cask "font-fira-code"
+cask "font-fira-code-nerd-font"
 cask "gimp"
-cask "google-chrome"
+cask "goneovim"
+cask "grammarly-desktop"
 cask "handbrake"
 cask "istat-menus"
 cask "iterm2"
@@ -203,6 +208,7 @@ mas "Microsoft Remote Desktop", id: 1295203466
 mas "NextDNS", id: 1464122853
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Snappy", id: 512617038
 mas "Table Tool", id: 1122008420
 mas "The Unarchiver", id: 425424353
 mas "VSD Viewer", id: 580788158
