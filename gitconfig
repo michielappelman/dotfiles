@@ -7,7 +7,7 @@
   user = michielappelman
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [core]
   excludesfile = ~/.gitignore
 [commit]
