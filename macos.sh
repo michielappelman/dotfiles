@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 
-# General Seppings
+# Symlinks to Documents folder
+dirs=("Music" "Movies" "Pictures" "sources" "sources/bin")
+for dir in "${dirs[@]}"; do
+  LINKDIR="$HOME/Documents/$dir"
+  DIRNAME="$(echo $dir | awk -F '/' '{print $NF}')"
+  HOMEDIR="$HOME/$DIRNAME"
+
+  if [ -L "$HOMEDIR" ] || ! [ -e "$HOMEDIR" ]
+  then
+    rm -rv "$HOMEDIR"
+    ln -sv "$LINKDIR" "$HOMEDIR"
+  else
+    echo "WARN: $HOMEDIR exists but is not a link"
+  fi
+done
+
+# General Settings
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 defaults write NSGlobalDomain AppleSpacesSwitchOnActivate -bool true
@@ -61,12 +77,12 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf" # search in current folder
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
-chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+chflags nohidden ~/Library
 killall Finder
 
 # Screenshot Settings
 defaults write com.apple.screencapture "type" -string "png"
-defaults write com.apple.screencapture "location" -string "~/OneDrive - Cisco/Screenshots"
+defaults write com.apple.screencapture "location" -string "~/Documents/Screenshots"
 defaults write com.apple.screencapture "disable-shadow" -bool true
 killall SystemUIServer
 
