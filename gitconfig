@@ -5,12 +5,9 @@
   username = mike
 [github]
   user = michielappelman
-[gpg]
-  format = ssh
 
-[includeIf "gitdir/i:OneDrive - Cisco/"]
-  path = ~/.gitconfig-cisco
-
+[init]
+	defaultBranch = main
 [core]
   excludesfile = ~/.gitignore
 [commit]
@@ -24,7 +21,7 @@
   default = simple
 
 [alias]
-  l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   co = checkout
   cob = checkout -b

@@ -3,7 +3,7 @@ export HISTSIZE=100000
 export SAVEHIST=100000
 export KEYTIMEOUT=1
 
-export GOPATH=$HOME/go
+export GOPATH=$HOME/sources/go
 export PATH="$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/go/bin:$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -20,14 +20,15 @@ function gpip() { PIP_REQUIRE_VIRTUALENV="" pip "$@"; }
 function gpip3() { PIP_REQUIRE_VIRTUALENV="" pip3 "$@"; }
 
 ## SSH Config
-export SSH_AUTH_SOCK="/tmp/ssh-agent"
-alias sas="ssh-agent -a $SSH_AUTH_SOCK > /dev/null"
+export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
 alias sap="ssh-add ~/.ssh/personal_hosts_ed25519 ~/.ssh/personal_hosts_rsa"
+alias sag="ssh-add ~/.ssh/github_ecdsa_sk ~/.ssh/github_ed25519 ~/.ssh/gitlab_ed25519" 
 alias sak="ssh-add ~/.ssh/id_ecdsa_sk"
 
 alias pp="ps axuf | pager"
 alias curl="curl --proto-default https"
 alias g="git"
+alias qrme="qrencode -t UTF8i < ~/Documents/Cloudflare/Michiel\ Appelman.vcf"
 
 ## Functions
 function hs() { grep $1 "$HISTFILE" }
