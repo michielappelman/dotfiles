@@ -21,6 +21,7 @@ function gpip3() { PIP_REQUIRE_VIRTUALENV="" pip3 "$@"; }
 
 ## SSH Config
 export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
+alias sas="eval $(ssh-agent)"
 alias sap="ssh-add ~/.ssh/personal_hosts_ed25519 ~/.ssh/personal_hosts_rsa"
 alias sag="ssh-add ~/.ssh/github_ecdsa_sk ~/.ssh/github_ed25519 ~/.ssh/gitlab_ed25519" 
 alias sak="ssh-add ~/.ssh/id_ecdsa_sk"

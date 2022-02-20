@@ -26,7 +26,8 @@
   co = checkout
   cob = checkout -b
   sw = !git checkout $(git branch -a --format '%(refname:short)' | sed 's~origin/~~' | sort | uniq | fzf)
-  st = status
+  fs = !git fetch --all && git status -s
+  st = status -s
   br = branch -av
   unstage = reset HEAD --
   subup = submodule update --init
