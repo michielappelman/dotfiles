@@ -6,7 +6,7 @@
   "doubleTapSwitchLayerTimeout": 250,
   "iconsAndLayerTextsBrightness": 40,
   "alphanumericSegmentsBrightness": 10,
-  "keyBacklightBrightness": 171,
+  "keyBacklightBrightness": 0,
   "mouseMoveInitialSpeed": 23,
   "mouseMoveAcceleration": 28,
   "mouseMoveDeceleratedSpeed": 12,
