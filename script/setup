@@ -18,7 +18,7 @@ for DOTFILE in * config/*; do
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-  echo $DOTFILE | egrep -q '(^config/$|^script/$|\.txt$|\.md$)' && continue
+  echo $DOTFILE | egrep -q '(^LICENSE$|^config/$|^script/$|\.txt$|\.md$)' && continue
 
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
