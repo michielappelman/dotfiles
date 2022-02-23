@@ -3,17 +3,17 @@
     "almostMaximizeWidth" : {
       "float" : 0
     },
-    "centerHalfCycles" : {
+    "curtainChangeSize" : {
       "int" : 0
     },
     "ignoredSnapAreas" : {
       "int" : 0
     },
+    "centerHalfCycles" : {
+      "int" : 0
+    },
     "allowAnyShortcut" : {
       "bool" : false
-    },
-    "curtainChangeSize" : {
-      "int" : 0
     },
     "screenEdgeGapBottom" : {
       "float" : 0
@@ -33,8 +33,8 @@
     "todoSidebarWidth" : {
       "float" : 400
     },
-    "fullIgnoreBundleIds" : {
-
+    "specifiedHeight" : {
+      "float" : 1050
     },
     "disabledApps" : {
 
@@ -42,8 +42,8 @@
     "todoApplication" : {
       "string" : "md.obsidian"
     },
-    "specifiedHeight" : {
-      "float" : 1050
+    "fullIgnoreBundleIds" : {
+
     },
     "gapSize" : {
       "float" : 0
@@ -51,28 +51,28 @@
     "centeredDirectionalMove" : {
       "int" : 0
     },
-    "applyGapsToMaximize" : {
-      "int" : 0
-    },
-    "snapEdgeMarginTop" : {
-      "float" : 5
-    },
     "unsnapRestore" : {
       "int" : 0
     },
-    "snapModifiers" : {
+    "applyGapsToMaximize" : {
       "int" : 0
     },
     "autoMaximize" : {
       "int" : 0
     },
+    "snapModifiers" : {
+      "int" : 0
+    },
+    "snapEdgeMarginTop" : {
+      "float" : 5
+    },
     "altThirdCycle" : {
       "int" : 0
     },
-    "moveCursorAcrossDisplays" : {
+    "applyGapsToMaximizeHeight" : {
       "int" : 0
     },
-    "applyGapsToMaximizeHeight" : {
+    "moveCursorAcrossDisplays" : {
       "int" : 0
     },
     "launchOnLogin" : {
@@ -87,32 +87,32 @@
     "minimumWindowHeight" : {
       "float" : 0
     },
-    "snapEdgeMarginBottom" : {
-      "float" : 5
-    },
     "specifiedWidth" : {
       "float" : 1680
     },
     "footprintFade" : {
       "int" : 0
     },
-    "screenEdgeGapRight" : {
-      "float" : 0
+    "snapEdgeMarginBottom" : {
+      "float" : 5
     },
-    "screenEdgeGapLeft" : {
+    "screenEdgeGapRight" : {
       "float" : 0
     },
     "notifiedOfProblemApps" : {
       "bool" : false
     },
-    "alternateDefaultShortcuts" : {
-      "bool" : true
+    "screenEdgeGapLeft" : {
+      "float" : 0
+    },
+    "showAllActionsInMenu" : {
+      "int" : 0
     },
     "subsequentExecutionMode" : {
       "int" : 0
     },
-    "showAllActionsInMenu" : {
-      "int" : 0
+    "alternateDefaultShortcuts" : {
+      "bool" : true
     },
     "footprintBorderWidth" : {
       "float" : 2
@@ -129,11 +129,14 @@
     "snapEdgeMarginLeft" : {
       "float" : 5
     },
+    "snapEdgeMarginRight" : {
+      "float" : 5
+    },
     "obtainWindowOnClick" : {
       "int" : 0
     },
-    "snapEdgeMarginRight" : {
-      "float" : 5
+    "footprintColor" : {
+
     },
     "footprintAlpha" : {
       "float" : 0.30000001192092896
@@ -143,9 +146,6 @@
     },
     "attemptMatchOnNextPrevDisplay" : {
       "int" : 0
-    },
-    "footprintColor" : {
-
     },
     "almostMaximizeHeight" : {
       "float" : 0
@@ -178,12 +178,16 @@
       "keyCode" : 121,
       "modifierFlags" : 1835008
     },
-    "bottomHalf" : {
-      "keyCode" : 125,
+    "smaller" : {
+      "keyCode" : 27,
       "modifierFlags" : 1835008
     },
     "rightHalf" : {
       "keyCode" : 124,
+      "modifierFlags" : 1835008
+    },
+    "bottomHalf" : {
+      "keyCode" : 125,
       "modifierFlags" : 1835008
     },
     "topCenterSixth" : {
@@ -194,32 +198,28 @@
       "keyCode" : 115,
       "modifierFlags" : 1835008
     },
-    "smaller" : {
-      "keyCode" : 27,
-      "modifierFlags" : 1835008
-    },
     "larger" : {
       "keyCode" : 24,
-      "modifierFlags" : 1835008
-    },
-    "centerThird" : {
-      "keyCode" : 40,
-      "modifierFlags" : 1835008
-    },
-    "bottomLeft" : {
-      "keyCode" : 116,
       "modifierFlags" : 1835008
     },
     "center" : {
       "keyCode" : 8,
       "modifierFlags" : 1835008
     },
-    "topHalf" : {
-      "keyCode" : 126,
+    "bottomLeft" : {
+      "keyCode" : 116,
       "modifierFlags" : 1835008
     },
     "maximizeHeight" : {
       "keyCode" : 34,
+      "modifierFlags" : 1835008
+    },
+    "topHalf" : {
+      "keyCode" : 126,
+      "modifierFlags" : 1835008
+    },
+    "centerThird" : {
+      "keyCode" : 40,
       "modifierFlags" : 1835008
     }
   },
