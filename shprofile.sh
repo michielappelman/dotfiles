@@ -4,7 +4,7 @@ export SAVEHIST=100000
 export KEYTIMEOUT=1
 
 export GOPATH=$HOME/sources/go
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/go/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:${PATH}"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -12,6 +12,12 @@ export LANG=en_US.UTF-8
 [ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
 if [[ $MACOS == 1 ]]
 then
+  export HOMEBREW_PREFIX="/opt/homebrew";
+  export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+  export HOMEBREW_REPOSITORY="/opt/homebrew";
+  export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:${PATH}";
+  export MANPATH="$HOMEBREW_PREFIX/share/man:${MANPATH}";
+  export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH}";
   export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
@@ -23,11 +29,12 @@ function gpip3() { PIP_REQUIRE_VIRTUALENV="" pip3 "$@"; }
 export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
 alias sas="eval $(ssh-agent)"
 alias sap="ssh-add ~/.ssh/personal_hosts_ed25519 ~/.ssh/personal_hosts_rsa"
-alias sag="ssh-add ~/.ssh/github_ecdsa_sk ~/.ssh/github_ed25519 ~/.ssh/gitlab_ed25519"
-alias sak="ssh-add ~/.ssh/id_ecdsa_sk"
+alias sag="ssh-add ~/.ssh/github_ed25519 ~/.ssh/gitlab_ed25519"
+alias sak="ssh-add ~/.ssh/blue_yubi_sk"
+alias sac="ssh-add ~/.ssh/cf_yubi_sk"
 
 alias pp="ps axuf | pager"
-alias curl="curl --proto-default https"
+alias curl="curl -s --proto-default https"
 alias g="git"
 alias qrme="qrencode -t UTF8i < ~/Documents/Cloudflare/Michiel\ Appelman.vcf"
 
@@ -36,11 +43,14 @@ function hs() { grep $1 "$HISTFILE" }
 # removes lines from $1 if they appear in $2
 function remove_lines_from() { grep -F -x -v -f $2 $1; }
 function mkcd() { mkdir -p "$@" && cd "$1"; }
-function ..() { 
-  for i in $(seq 1 $1); do cd ..; done 
+function ..() {
+  for i in $(seq 1 $1); do cd ..; done
 }
 # fff cd on exit
 function f() { fff "$@"; cd "$(cat ~/.fff_d)"; }
+function dg() { dig "$@" | grep -v "^;\|^$" }
+function rep() { for i in $(seq 1 $1) ; do $(echo "$@" | cut -d " " -f 2-); sleep 1; done }
+function jcurl() { curl $@ -H "Content-Type:application/json" | jq }
 
 # Create a new Python virtual env
 function pynew() {
@@ -62,20 +72,18 @@ function l_pyenv() {
 }
 
 function l_gcloud() {
-    # The next line updates PATH for the Google Cloud SDK.
-    if [ -f '/Users/mappelma/Documents/sources/google-cloud-sdk/path.zsh.inc' ]
-    then
-        . '/Users/mappelma/Documents/sources/google-cloud-sdk/path.zsh.inc'
-    fi
-    # The next line enables shell command completion for gcloud.
-    if [ -f '/Users/mappelma/Documents/sources/google-cloud-sdk/completion.zsh.inc' ]
-    then
-        . '/Users/mappelma/Documents/sources/google-cloud-sdk/completion.zsh.inc'
-    fi
+    source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+    source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 }
 
 function l_nvm() {
   export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  if [[ $MACOS == 1 ]]
+  then
+    export NVM_EXEC_DIR="/opt/homebrew/opt/nvm"
+  else
+    export NVM_EXEC_DIR="$NVM_DIR"
+  fi
+  [ -s "$NVM_EXEC_DIR/nvm.sh" ] && \. "$NVM_EXEC_DIR/nvm.sh"
+  [ -s "$NVM_EXEC_DIR/bash_completion" ] && \. "$NVM_EXEC_DIR/bash_completion"
 }
