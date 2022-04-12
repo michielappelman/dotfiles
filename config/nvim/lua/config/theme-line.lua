@@ -1,14 +1,10 @@
 vim.o.termguicolors = true
 
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
-
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme base16-rose-pine-dawn]]
 
 require('lualine').setup {
   options = {
-    theme = 'tokyonight',
+    theme = 'papercolor',
     icons_enabled = true,
     section_separators = {"", ""},
     component_separators = {"", ""}
