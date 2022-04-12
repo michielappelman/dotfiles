@@ -23,3 +23,4 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=249'
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"

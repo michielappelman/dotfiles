@@ -5,6 +5,8 @@
   username = mike
 [github]
   user = michielappelman
+[includeIf "gitdir:~/cf/"]
+  path = ~/cf/.gitconfig
 
 [init]
   defaultBranch = main
