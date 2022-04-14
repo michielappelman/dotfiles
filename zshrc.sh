@@ -22,5 +22,5 @@ source $HOME/.dotfiles/plugins/zsh-z/zsh-z.plugin.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=249'
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-eval "$(starship init zsh)"
-eval "$(direnv hook zsh)"
+which starship &>/dev/null && eval "$(starship init zsh)"
+which direnv &>/dev/null && eval "$(direnv hook zsh)"

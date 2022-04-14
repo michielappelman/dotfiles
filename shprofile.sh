@@ -1,3 +1,4 @@
+#!/bin/bash
 # Save more history
 export HISTSIZE=100000
 export SAVEHIST=100000
@@ -19,38 +20,33 @@ then
   export MANPATH="$HOMEBREW_PREFIX/share/man:${MANPATH}";
   export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH}";
   export HOMEBREW_NO_AUTO_UPDATE=1
+  export HOMEBREW_UPDATE_REPORT_ONLY_INSTALLED=1
 fi
 
 export PIP_REQUIRE_VIRTUALENV=true
 function gpip() { PIP_REQUIRE_VIRTUALENV="" pip "$@"; }
 function gpip3() { PIP_REQUIRE_VIRTUALENV="" pip3 "$@"; }
 
-## SSH Config
-export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
-alias sas="eval $(ssh-agent)"
-alias sap="ssh-add ~/.ssh/personal_hosts_ed25519 ~/.ssh/personal_hosts_rsa"
-alias sag="ssh-add ~/.ssh/github_ed25519 ~/.ssh/gitlab_ed25519"
-alias sak="ssh-add ~/.ssh/blue_yubi_sk"
-alias sac="ssh-add ~/.ssh/cf_yubi_sk"
-
-alias pp="ps axuf | pager"
-alias curl="curl -s --proto-default https"
-alias g="git"
-alias qrme="qrencode -t UTF8i < ~/Documents/Cloudflare/Michiel\ Appelman.vcf"
-
 ## Functions
-function hs() { grep $1 "$HISTFILE" }
+function hs() { grep $1 "$HISTFILE"; }
+
 # removes lines from $1 if they appear in $2
 function remove_lines_from() { grep -F -x -v -f $2 $1; }
+# directory functions
 function mkcd() { mkdir -p "$@" && cd "$1"; }
-function ..() {
-  for i in $(seq 1 $1); do cd ..; done
-}
+function ..() { for i in $(seq 1 $1); do cd ..; done }
+
 # fff cd on exit
 function f() { fff "$@"; cd "$(cat ~/.fff_d)"; }
-function dg() { dig "$@" | grep -v "^;\|^$" }
-function rep() { for i in $(seq 1 $1) ; do $(echo "$@" | cut -d " " -f 2-); sleep 1; done }
-function jcurl() { curl $@ -H "Content-Type:application/json" | jq }
+
+# Short, but not too short, dig
+function dg() { dig +nocomments +nocmd +nostats "$@"; }
+
+# Repeat command
+function rep() { for _ in $(seq 1 $1) ; do eval "$(echo "$@" | cut -d " " -f 2-)"; sleep 1; done }
+
+# JSON Curl
+function jcurl() { curl "$@" -H "Content-Type:application/json" | jq; }
 
 # Create a new Python virtual env
 function pynew() {
@@ -63,7 +59,7 @@ function pynew() {
   pip install -r requirements.txt
 }
 
-## Lazy Loading
+## Lazy Loading Functions
 function l_pyenv() {
     export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
