@@ -25,6 +25,7 @@ alias pp="ps axuf | pager"
 alias curl="curl -s --proto-default https"
 alias g="git"
 alias qrme="qrencode -t UTF8i < ~/Documents/Cloudflare/Michiel\ Appelman.vcf"
+alias whois="whois -h whois.cymru.com"
 
 quiet_which() {
   which $1 &>/dev/null

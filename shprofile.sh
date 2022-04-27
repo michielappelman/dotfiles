@@ -46,7 +46,10 @@ function dg() { dig +nocomments +nocmd +nostats "$@"; }
 function rep() { for _ in $(seq 1 $1) ; do eval "$(echo "$@" | cut -d " " -f 2-)"; sleep 1; done }
 
 # JSON Curl
-function jcurl() { curl "$@" -H "Content-Type:application/json" | jq; }
+function jcurl() { curl -s "$@" -H "Content-Type:application/json" | jq; }
+
+# Find IPv4 Addresses
+function find-ips() { rg -o '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | fzf --preview="whois -h whois.cymru.com {}"; }
 
 # Create a new Python virtual env
 function pynew() {
