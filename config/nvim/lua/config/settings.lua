@@ -1,5 +1,8 @@
+vim.g.do_filetype_lua = true
+-- vim.g.did_load_filetypes = false
+
 -- Incremental live completion
-vim.o.inccommand = 'nosplit'
+vim.o.inccommand = "nosplit"
 
 -- Set highlight on search
 vim.o.hlsearch = true
@@ -12,7 +15,7 @@ vim.wo.relativenumber = true
 vim.o.hidden = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 vim.o.backup = false
 vim.o.swapfile = false
 
@@ -24,14 +27,14 @@ vim.o.breakindent = true
 vim.wo.colorcolumn = "80"
 
 -- Save undo history
-vim.cmd [[set undofile]]
+vim.cmd([[set undofile]])
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 vim.o.conceallevel = 2
 
 vim.o.expandtab = true
@@ -40,12 +43,16 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 0
 
 -- Filetype specific setttings
-vim.cmd [[
-filetype plugin on
-autocmd FileType python setlocal tabstop=4 softtabstop=4 expandtab
-]]
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "python",
+	callback = function()
+		vim.o.expandtab = true
+		vim.o.tabstop = 4
+		vim.o.softtabstop = 4
+	end,
+})
 
-vim.cmd [[
+vim.cmd([[
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_frontmatter = 1
@@ -56,4 +63,4 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_no_extensions_in_markdown = 1
 let g:vim_markdown_autowrite = 1
 let g:vim_markdown_edit_url_in = 'tab'
-]]
+]])

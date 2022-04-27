@@ -51,12 +51,9 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 require("null-ls").setup({
 	sources = {
 		require("null-ls").builtins.formatting.stylua,
-		require("null-ls").builtins.formatting.gofmt,
-		require("null-ls").builtins.formatting.goimports,
 		require("null-ls").builtins.formatting.prettier,
 		require("null-ls").builtins.formatting.black,
 		require("null-ls").builtins.formatting.rustfmt,
-		-- require("null-ls").builtins.formatting.eslint_d,
 		require("null-ls").builtins.diagnostics.eslint_d.with({
 			prefer_local = "node_modules/.bin",
 		}),
@@ -66,19 +63,29 @@ require("null-ls").setup({
 		require("null-ls").builtins.diagnostics.trail_space,
 		require("null-ls").builtins.code_actions.eslint_d,
 		require("null-ls").builtins.code_actions.gitsigns,
-		-- require("null-ls").builtins.completion.spell,
 	},
 	on_attach = on_attach,
 })
 
 -- Enable the following language servers
-local servers = { "gopls", "null-ls", "pyright", "tsserver", "jsonls" }
+local servers = { "gopls", "pyright", "tsserver", "jsonls" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({ on_attach = on_attach, capabilities = capabilities })
 end
 
-lspconfig.jsonls.setup({
-	settings = { json = { schemas = require("schemastore").json.schemas() } },
+lspconfig.gopls.setup({
+	cmd = { "gopls", "serve" },
+	filetypes = { "go", "gomod" },
+	root_dir = require("lspconfig/util").root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+				shadow = true,
+			},
+			staticcheck = true,
+		},
+	},
 })
 
 lspconfig.tsserver.setup({
@@ -86,4 +93,8 @@ lspconfig.tsserver.setup({
 		client.resolved_capabilities.document_formatting = false
 		client.resolved_capabilities.document_range_formatting = false
 	end,
+})
+
+lspconfig.jsonls.setup({
+	settings = { json = { schemas = require("schemastore").json.schemas() } },
 })

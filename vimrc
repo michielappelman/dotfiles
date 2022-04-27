@@ -5,8 +5,8 @@ let mapleader = " "
 cmap w!! w !sudo tee > /dev/null %
 
 " Quickly open/reload vim
-nnoremap <leader>ev :tabe $MYVIMRC<CR>  
-nnoremap <leader>sv :source $MYVIMRC<CR>   
+nnoremap <leader>ev :tabe $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 map <F2> :Vexplore<CR>
 map <F4> :set invnumber<CR>
@@ -33,9 +33,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Language specific
 Plug 'fatih/vim-go'
 Plug 'plasticboy/vim-markdown'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'pearofducks/ansible-vim'
-Plug 'mitsuhiko/vim-jinja'
 Plug 'psf/black'
 
 " Editing
@@ -117,76 +114,14 @@ set noswapfile
 set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-" Use spaces instead of tabs
-set expandtab
 " Be smart when using tabs ;)
 set smarttab
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+
+" Use spaces instead of tabs
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=0
 
 set ai "Auto indent
 set si "Smart indent
-
-set laststatus=2
-
-" Markdown Settings
-" ---------------
-autocmd FileType markdown,mkd setl fdl=6 tw=0 linebreak breakindent
-                          \ | set conceallevel=2
-                          \ | let g:vim_markdown_strikethrough = 1
-                          \ | let g:vim_markdown_toc_autofit = 1
-                          \ | let g:vim_markdown_folding_disabled=1
-                          \ | let g:vim_markdown_auto_insert_bullets = 1
-                          \ | let g:vim_markdown_new_list_item_indent = 1
-                          \ | let g:vim_markdown_edit_url_in = 'tab'
-                          \ | let g:vim_markdown_conceal_code_blocks = 0
-
-" Python Settings
-" ---------------
-" Space, = does a Python format of the complete file.
-autocmd FileType python nnoremap <Leader>= :Black<CR>
-autocmd BufWritePre *.py execute ':Black'
-
-" Go Settings
-" ---------------
-let g:go_fmt_command = "goimports"
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_term_enabled = 1
-let g:go_list_type = "quickfix"
-let g:go_addtags_transform = "camelcase"
-
-" vim-go
-augroup vg
-"au FileType go nmap <Leader>b :GoBuild<CR>
-"au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-au FileType go nmap <Leader>cr :GoCallers<CR>
-au FileType go nmap <Leader>ce :GoCallees<CR>
-au FileType go nmap <Leader>? :GoCoverageToggle<CR>
-au FileType go nmap <Leader>D :GoDefPop<CR>
-au FileType go nmap <Leader>v :GoImplements<CR>
-au FileType go nmap <Leader>I :GoImports<CR>
-au FileType go nmap <Leader>i :GoInstall<CR>
-au FileType go nmap <Leader>p :GoPlay<CR>
-au FileType go nmap <Leader>' :GoDocBrowser<CR>
-au FileType go nmap <Leader>b :GoToggleBreakpoint<CR>
-au FileType go nmap <Leader>db :GoDebug<CR>
-au FileType go nmap <Leader>e :Refactor extract
-
-au FileType go nmap <leader>rt <Plug>(go-run-tab)
-au FileType go nmap <Leader>rs <Plug>(go-run-split)
-au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
-
-au FileType go nmap <Leader>,, :GoAlternate<CR>
-au FileType go nmap <Leader>T :GoTestFunc
-au FileType go nmap <Leader>t :GoTest
-au FileType go nmap <Leader>r :GoReferrers<CR>
-au FileType go nmap <Leader>cp :GoChannelPeers<CR>
-au FileType go nmap <Leader>d :GoDef<CR>
-au FileType go nmap <Leader>k :GoInfo<CR>
-augroup END
