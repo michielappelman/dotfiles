@@ -82,7 +82,7 @@ killall Finder
 
 # Screenshot Settings
 defaults write com.apple.screencapture "type" -string "png"
-defaults write com.apple.screencapture "location" -string "~/Documents/Screenshots"
+defaults write com.apple.screencapture "location" -string "${HOME}/Documents/Screenshots"
 defaults write com.apple.screencapture "disable-shadow" -bool true
 killall SystemUIServer
 
