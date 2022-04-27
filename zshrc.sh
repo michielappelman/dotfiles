@@ -19,7 +19,6 @@ source $HOME/.dotfiles/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zs
 source $HOME/.dotfiles/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $HOME/.dotfiles/plugins/zsh-z/zsh-z.plugin.zsh
 
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=249'
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 which starship &>/dev/null && eval "$(starship init zsh)"
