@@ -66,8 +66,6 @@ require("packer").startup({
 			requires = "kyazdani42/nvim-web-devicons",
 			config = function()
 				require("nvim-tree").setup({
-					open_on_setup = true,
-					open_on_setup_file = true,
 					update_cwd = true,
 					actions = {
 						use_system_clipboard = true,
@@ -75,10 +73,6 @@ require("packer").startup({
 							enable = true,
 							global = false,
 							restrict_above_cwd = false,
-						},
-						open_file = {
-							quit_on_open = false,
-							resize_window = true,
 						},
 					},
 					view = {

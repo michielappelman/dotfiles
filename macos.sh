@@ -27,6 +27,10 @@ defaults write NSGlobalDomain NSNavPanelFileLastListModeForOpenModeKey -int 2
 defaults write NSGlobalDomain NSNavPanelFileListModeForOpenMode2 -int 2
 defaults write NSGlobalDomain NavPanelFileListModeForOpenMode -int 2
 
+# Window Options
+# https://mmazzarolo.com/blog/2022-04-16-drag-window-by-clicking-anywhere-on-macos/
+defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true
+
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 

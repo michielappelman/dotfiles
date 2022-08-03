@@ -16,7 +16,7 @@ then
   export HOMEBREW_PREFIX="/opt/homebrew";
   export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
   export HOMEBREW_REPOSITORY="/opt/homebrew";
-  export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:${PATH}";
+  export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:${PATH}";
   export MANPATH="$HOMEBREW_PREFIX/share/man:${MANPATH}";
   export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH}";
   export HOMEBREW_NO_AUTO_UPDATE=1
@@ -33,11 +33,11 @@ function hs() { grep $1 "$HISTFILE"; }
 # removes lines from $1 if they appear in $2
 function remove_lines_from() { grep -F -x -v -f $2 $1; }
 # directory functions
-function mkcd() { mkdir -p "$@" && cd "$1"; }
+function mkcd() { mkdir -p "$@" && cd "$1" || exit; }
 function ..() { for i in $(seq 1 $1); do cd ..; done }
 
 # fff cd on exit
-function f() { fff "$@"; cd "$(cat ~/.fff_d)"; }
+function f() { fff "$@"; cd "$(cat ~/.fff_d)" || exit; }
 
 # Short, but not too short, dig
 function dg() { dig +nocomments +nocmd +nostats "$@"; }
@@ -49,7 +49,10 @@ function rep() { for _ in $(seq 1 $1) ; do eval "$(echo "$@" | cut -d " " -f 2-)
 function jcurl() { curl -s "$@" -H "Content-Type:application/json" | jq; }
 
 # Find IPv4 Addresses
-function find-ips() { rg -o '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | fzf --preview="whois -h whois.cymru.com {}"; }
+function find-ips() { rg -o '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | fzf --preview="whois -h whois.cymru.com {};dig -x {} +short"; }
+
+# IPify request
+function ipify() { curl -s "https://geo.ipify.org/api/v2/country?apiKey=${IPIFY_TOKEN}&ipAddress=$@" | jq; }
 
 # Create a new Python virtual env
 function pynew() {
