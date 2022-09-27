@@ -26,6 +26,8 @@ alias curl="curl -s --proto-default https"
 alias g="git"
 alias qrme="qrencode -t UTF8i < ~/Documents/Cloudflare/Michiel\ Appelman.vcf"
 alias whois="whois -h whois.cymru.com"
+alias q="q -s https://cloudflare-dns.com/dns-query"
+alias jcurl="curl -H 'Content-Type:application/json'"
 
 quiet_which() {
   which $1 &>/dev/null

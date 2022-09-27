@@ -20,7 +20,6 @@ then
   export MANPATH="$HOMEBREW_PREFIX/share/man:${MANPATH}";
   export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH}";
   export HOMEBREW_NO_AUTO_UPDATE=1
-  export HOMEBREW_UPDATE_REPORT_ONLY_INSTALLED=1
 fi
 
 export PIP_REQUIRE_VIRTUALENV=true
@@ -45,11 +44,9 @@ function dg() { dig +nocomments +nocmd +nostats "$@"; }
 # Repeat command
 function rep() { for _ in $(seq 1 $1) ; do eval "$(echo "$@" | cut -d " " -f 2-)"; sleep 1; done }
 
-# JSON Curl
-function jcurl() { curl -s "$@" -H "Content-Type:application/json" | jq; }
-
 # Find IPv4 Addresses
-function find-ips() { rg -o '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | fzf --preview="whois -h whois.cymru.com {};dig -x {} +short"; }
+# Required brew packages: ipinfo-cli grepip fzf
+function analyze-ips() { fzf --preview='ipinfo bulk $(echo {} | grepip -o)' --reverse; }
 
 # IPify request
 function ipify() { curl -s "https://geo.ipify.org/api/v2/country?apiKey=${IPIFY_TOKEN}&ipAddress=$@" | jq; }
