@@ -12,9 +12,10 @@
   defaultBranch = main
 [core]
   excludesfile = ~/.gitignore
-[commit]
-  verbose = true
 
+[merge]
+  ff = no
+  commit = no
 [pull]
   rebase = true
 [rebase]
