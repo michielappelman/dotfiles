@@ -20,21 +20,39 @@ zstyle ':completion:*' menu select
 which starship &>/dev/null && eval "$(starship init zsh)"
 which direnv &>/dev/null && eval "$(direnv hook zsh)"
 
-if [ -f ~/.fzf.zsh ]
+if which fzf &>/dev/null
 then
-  source ~/.fzf.zsh
+  if [[ $MACOS == 1 ]]
+  then
+    if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
+      PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+    fi
+    [[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+    source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+  fi
 
-  export FZF_DEFAULT_OPTS="--ansi --info inline"
-  export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --color=always"
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+  if [[ $LINUX == 1 ]]
+  then
+    [[ $- == *i* ]] && source "/usr/share/doc/fzf/examples/completion.zsh" 2> /dev/null
+    source "/usr/share/doc/fzf/examples/key-bindings.zsh"
+  fi
 
-  _fzf_compgen_path() {
-    fd --hidden --follow --exclude .git . "$1"
-  }
-  _fzf_compgen_dir() {
-    fd --type d --hidden --follow --exclude .git . "$1"
-  }
+  if which fd &>/dev/null
+  then
+    export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --color=always"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+
+    _fzf_compgen_path() {
+      fd --hidden --follow --exclude .git . "$1"
+    }
+    _fzf_compgen_dir() {
+      fd --type d --hidden --follow --exclude .git . "$1"
+    }
+  fi
+
   bindkey '^[[A' fzf-history-widget
+  export FZF_DEFAULT_OPTS="--ansi --info inline"
+
 fi
 
