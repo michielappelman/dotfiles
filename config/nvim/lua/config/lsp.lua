@@ -83,11 +83,6 @@ lspconfig["gopls"].setup({
 	on_attach = on_attach,
 })
 
-lspconfig["jsonls"].setup({
-	settings = { json = { schemas = require("schemastore").json.schemas() } },
-	on_attach = on_attach,
-})
-
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do

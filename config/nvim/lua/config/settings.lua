@@ -35,7 +35,7 @@ vim.o.smartcase = true
 
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
-vim.o.conceallevel = 2
+vim.o.conceallevel = 0
 
 vim.o.expandtab = true
 vim.o.tabstop = 2

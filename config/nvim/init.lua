@@ -50,12 +50,6 @@ require("packer").startup({
 		})
 
 		use({
-			"ahmedkhalf/project.nvim",
-			config = function()
-				require("project_nvim").setup({})
-			end,
-		})
-		use({
 			"kyazdani42/nvim-tree.lua",
 			requires = "kyazdani42/nvim-web-devicons",
 			config = function()
@@ -123,7 +117,6 @@ require("packer").startup({
 
 		-- LSP
 		use("neovim/nvim-lspconfig")
-		use("b0o/schemastore.nvim")
 
 		-- Completion
 		use("hrsh7th/nvim-cmp")
@@ -149,8 +142,6 @@ require("packer").startup({
 		},
 	},
 })
-
-require("telescope").load_extension("projects")
 
 -- -- Load external configs
 require("config.settings")
