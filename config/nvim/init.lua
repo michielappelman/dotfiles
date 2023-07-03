@@ -26,16 +26,10 @@ vim.api.nvim_exec(
 require("packer").startup({
 	function(use)
 		use("wbthomason/packer.nvim")
-		use({
-			"folke/twilight.nvim",
-			config = function()
-				require("twilight").setup({})
-			end,
-		})
-
+		use("RRethy/nvim-base16")
 		-- Git
 		use({
-			"TimUntersberger/neogit",
+			"NeogitOrg/neogit",
 			requires = { "sindrets/diffview.nvim", "nvim-lua/plenary.nvim" },
 			opt = false,
 			config = function()
@@ -83,7 +77,7 @@ require("packer").startup({
 			end,
 		})
 		use({
-			"hoob3rt/lualine.nvim",
+			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = false },
 		})
 		use({ "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } })

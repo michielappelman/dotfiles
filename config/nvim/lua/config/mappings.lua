@@ -1,3 +1,5 @@
+local opts = { noremap = true, silent = true }
+
 -- Remap space as leader key
 vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
@@ -9,6 +11,12 @@ vim.keymap.set("n", "<c-left>", "<C-W><C-H>")
 vim.keymap.set("n", "<c-down>", "<C-W><C-J>")
 vim.keymap.set("n", "<c-up>", "<C-W><C-K>")
 vim.keymap.set("n", "<c-right>", "<C-W><C-L>")
+
+vim.keymap.set("t", "<A-q>", "<C-\\><C-n>", opts)
+vim.keymap.set("t", "<A-left>", "<C-\\><C-W><C-H>")
+vim.keymap.set("t", "<A-down>", "<C-\\><C-W><C-J>")
+vim.keymap.set("t", "<A-up>", "<C-\\><C-W><C-K>")
+vim.keymap.set("t", "<A-right>", "<C-\\><C-W><C-L>")
 
 -- Some cool remaps thanks to Primeagen: https://youtu.be/hSHATqh8svM
 vim.keymap.set("n", "n", "nzz")
@@ -36,7 +44,7 @@ vim.keymap.set("i", "<C-s>", [[<Esc>:w<CR>i]])
 vim.keymap.set("v", "<C-s>", [[<Esc>:w<CR>]])
 
 -- Buffer/Tab navigation
-vim.keymap.set("n", "<C-q>", ":BufferClose<CR>")
+vim.keymap.set("n", "<C-q>", ":close<CR>")
 vim.keymap.set("n", "\\b", ":BufferPick<CR>")
 vim.keymap.set("n", "[b", ":BufferPrevious<CR>")
 vim.keymap.set("n", "]b", ":BufferNext<CR>")
