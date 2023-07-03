@@ -27,7 +27,6 @@ function gpip() { PIP_REQUIRE_VIRTUALENV="" pip "$@"; }
 function gpip3() { PIP_REQUIRE_VIRTUALENV="" pip3 "$@"; }
 
 ## Functions
-function hs() { grep $1 "$HISTFILE"; }
 
 # removes lines from $1 if they appear in $2
 function remove_lines_from() { grep -F -x -v -f $2 $1; }

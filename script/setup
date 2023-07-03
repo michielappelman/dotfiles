@@ -5,7 +5,6 @@
 DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
-git submodule update --init
 
 mkdir -p "$HOME/.config"
 
@@ -40,7 +39,7 @@ then
 
   echo 'Installing brew:'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  brew bundle --quiet install
+  brew bundle install
   SS_PLATFORM="apple-darwin"
 elif [ $LINUX ]
 then
