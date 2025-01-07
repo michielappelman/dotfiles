@@ -9,9 +9,4 @@ require("lualine").setup({
 	},
 })
 
-require("indent_blankline").setup({
-	char = "│",
-	show_first_indent_level = true,
-	buftype_exclude = { "terminal" },
-	show_current_context = true,
-})
+require("ibl").setup()

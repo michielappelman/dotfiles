@@ -62,7 +62,7 @@ require("null-ls").setup({
 })
 
 -- Enable the following language servers
-local servers = { "gopls", "pyright", "tsserver", "jsonls" }
+local servers = { "gopls", "pyright", "ts_ls", "jsonls" }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({ on_attach = on_attach, capabilities = capabilities })
 end

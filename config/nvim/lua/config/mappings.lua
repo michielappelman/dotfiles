@@ -5,8 +5,6 @@ vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.o.pastetoggle = "<F7>"
-
 vim.keymap.set("n", "<c-left>", "<C-W><C-H>")
 vim.keymap.set("n", "<c-down>", "<C-W><C-J>")
 vim.keymap.set("n", "<c-up>", "<C-W><C-K>")
@@ -60,38 +58,38 @@ vim.keymap.set("n", "<leader>sp", [[<cmd>lua require('telescope.builtin').live_g
 vim.keymap.set("n", "<leader>so", [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]])
 vim.keymap.set("n", "<leader>?", [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]])
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-	pattern = "*",
-	desc = "Add small delete to numbered register",
-	-- based on: https://vi.stackexchange.com/questions/2493/can-i-make-vim-also-save-small-deletions-into-register-1/31321#31321
-	-- until Neovim gets https://github.com/neovim/neovim/pull/8169
-	-- associated with https://github.com/neovim/neovim/issues/8121
-	callback = function()
-		-- Also run highlighter
-		require("vim.highlight").on_yank({ higroup = "Search", timeout = 200 })
-
-		local e = vim.v.event
-		if e.operator == "y" then -- Don't care about actual yanks
-			return
-		end
-		if e.regtype == "V" then -- Vim already handles linewise deletions
-			return
-		end
-		if #e.regcontents > 1 then -- Vim already handles deletions spanning multiple lines
-			return
-		end
-
-		local deleted = e.regcontents[1]
-		if #deleted == 1 then -- Don't want to catch single-character deletions
-			return
-		end
-
-		-- Move current numbered registers down
-		for i = 9, 2, -1 do
-			local prev_reg = vim.api.nvim_call_function("getreg", { i - 1 })
-			vim.api.nvim_call_function("setreg", { i, prev_reg })
-		end
-		-- Add small deletion to register list
-		vim.api.nvim_call_function("setreg", { 1, deleted })
-	end,
-})
+-- vim.api.nvim_create_autocmd("TextYankPost", {
+-- 	pattern = "*",
+-- 	desc = "Add small delete to numbered register",
+-- 	-- based on: https://vi.stackexchange.com/questions/2493/can-i-make-vim-also-save-small-deletions-into-register-1/31321#31321
+-- 	-- until Neovim gets https://github.com/neovim/neovim/pull/8169
+-- 	-- associated with https://github.com/neovim/neovim/issues/8121
+-- 	callback = function()
+-- 		-- Also run highlighter
+-- 		require("vim.highlight").on_yank({ higroup = "Search", timeout = 200 })
+--
+-- 		local e = vim.v.event
+-- 		if e.operator == "y" then -- Don't care about actual yanks
+-- 			return
+-- 		end
+-- 		if e.regtype == "V" then -- Vim already handles linewise deletions
+-- 			return
+-- 		end
+-- 		if #e.regcontents > 1 then -- Vim already handles deletions spanning multiple lines
+-- 			return
+-- 		end
+--
+-- 		local deleted = e.regcontents[1]
+-- 		if #deleted == 1 then -- Don't want to catch single-character deletions
+-- 			return
+-- 		end
+--
+-- 		-- Move current numbered registers down
+-- 		for i = 9, 2, -1 do
+-- 			local prev_reg = vim.api.nvim_call_function("getreg", { i - 1 })
+-- 			vim.api.nvim_call_function("setreg", { i, prev_reg })
+-- 		end
+-- 		-- Add small deletion to register list
+-- 		vim.api.nvim_call_function("setreg", { 1, deleted })
+-- 	end,
+-- })
