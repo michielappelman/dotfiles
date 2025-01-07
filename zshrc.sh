@@ -29,6 +29,9 @@ then
     fi
     [[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
     source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+
+    export ITERM2_SQUELCH_MARK=1
+    source ~/.iterm2_shell_integration.zsh
   fi
 
   if [[ $LINUX == 1 ]]

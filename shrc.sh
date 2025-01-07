@@ -55,7 +55,7 @@ else
   export GIT_PAGER='less -+$LESS -RX'
 fi
 
-if [ $OSX ]
+if [ $MACOS ]
 then
   export GREP_OPTIONS="--color=auto"
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
