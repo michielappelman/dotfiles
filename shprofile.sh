@@ -63,10 +63,13 @@ function pynew() {
 
 ## Lazy Loading Functions
 function l_pyenv() {
+    export PYENV_ROOT="$HOME/.pyenv"
     export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-    eval "$(pyenv init - --no-rehash zsh)"
-    eval "$(pyenv virtualenv-init -)"
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    # eval "$(pyenv init - --no-rehash zsh)"
+    # eval "$(pyenv virtualenv-init -)"
 }
 
 function l_gcloud() {
