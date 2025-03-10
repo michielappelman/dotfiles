@@ -54,7 +54,8 @@ then
     }
   fi
 
-  bindkey '^[[A' fzf-history-widget
+  bindkey -a '/' fzf-history-widget
+  # bindkey '^R' fzf-history-widget
   export FZF_DEFAULT_OPTS="--ansi --info inline"
 
 fi

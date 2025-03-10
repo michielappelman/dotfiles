@@ -62,6 +62,35 @@ function pynew() {
 }
 
 ## Lazy Loading Functions
+l_nvm() {
+  unset -f npm node nvm
+  if [[ $MACOS == 1 ]]
+  then
+    export NVM_DIR="$HOME/.nvm"
+    export NVM_EXEC_DIR="/opt/homebrew/opt/nvm"
+  else
+    export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
+    export NVM_EXEC_DIR="$NVM_DIR"
+  fi
+  [ -s "$NVM_EXEC_DIR/nvm.sh" ] && source "$NVM_EXEC_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+}
+
+npm() {
+ l_nvm
+ npm "$@"
+}
+
+node() {
+  l_nvm
+  node "$@"
+}
+
+nvm() {
+  l_nvm
+  nvm "$@"
+}
+
 function l_pyenv() {
     export PYENV_ROOT="$HOME/.pyenv"
     export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
@@ -75,16 +104,4 @@ function l_pyenv() {
 function l_gcloud() {
     source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
     source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-}
-
-function l_nvm() {
-  export NVM_DIR="$HOME/.nvm"
-  if [[ $MACOS == 1 ]]
-  then
-    export NVM_EXEC_DIR="/opt/homebrew/opt/nvm"
-  else
-    export NVM_EXEC_DIR="$NVM_DIR"
-  fi
-  [ -s "$NVM_EXEC_DIR/nvm.sh" ] && \. "$NVM_EXEC_DIR/nvm.sh"
-  [ -s "$NVM_EXEC_DIR/bash_completion" ] && \. "$NVM_EXEC_DIR/bash_completion"
 }
