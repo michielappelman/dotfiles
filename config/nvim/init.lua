@@ -107,7 +107,6 @@ require("packer").startup({
 		})
 
 		use("lukas-reineke/indent-blankline.nvim")
-		use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
 
 		-- markdown
 		use({ "plasticboy/vim-markdown", requires = "godlygeek/tabular" })

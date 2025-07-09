@@ -41,26 +41,6 @@ end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- Formatter Setup
-require("null-ls").setup({
-	sources = {
-		require("null-ls").builtins.formatting.stylua,
-		require("null-ls").builtins.formatting.prettier,
-		require("null-ls").builtins.formatting.black,
-		require("null-ls").builtins.formatting.rustfmt,
-		-- require("null-ls").builtins.diagnostics.eslint_d.with({
-		-- 	prefer_local = "node_modules/.bin",
-		-- }),
-		require("null-ls").builtins.diagnostics.gitlint,
-		require("null-ls").builtins.diagnostics.luacheck,
-		require("null-ls").builtins.diagnostics.shellcheck,
-		require("null-ls").builtins.diagnostics.trail_space,
-		-- require("null-ls").builtins.code_actions.eslint_d,
-		require("null-ls").builtins.code_actions.gitsigns,
-	},
-	on_attach = on_attach,
-})
-
 -- Enable the following language servers
 local servers = { "gopls", "pyright", "ts_ls", "jsonls" }
 for _, lsp in ipairs(servers) do
