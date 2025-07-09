@@ -5,6 +5,9 @@
   username = mike
 [github]
   user = michielappelman
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
 [includeIf "gitdir:~/cf/"]
   path = ~/cf/.gitconfig
 
