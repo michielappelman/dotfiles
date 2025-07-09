@@ -1,10 +1,14 @@
 # zmodload zsh/zprof
-source ~/.zprofile
 source ~/.shrc
 
 autoload -U compinit && compinit
 
 bindkey -v
+# keep some useful emacs bindings
+bindkey '\e.' insert-last-word        # Alt+. (last argument)
+bindkey '^A' beginning-of-line        # Ctrl+A (start of line)
+bindkey '^E' end-of-line              # Ctrl+E (end of line)
+bindkey '^R' history-incremental-search-backward  # Ctrl+R (search)
 
 export HISTFILE=~/.zsh_history
 
@@ -18,6 +22,7 @@ source $HOME/.dotfiles/plugins/zsh-z/zsh-z.plugin.zsh
 zstyle ':completion:*' menu select
 
 which starship &>/dev/null && eval "$(starship init zsh)"
+which mise &>/dev/null && eval "$(mise activate zsh)"
 which direnv &>/dev/null && eval "$(direnv hook zsh)"
 
 if which fzf &>/dev/null
@@ -55,7 +60,7 @@ then
   fi
 
   bindkey -a '/' fzf-history-widget
-  # bindkey '^R' fzf-history-widget
+  bindkey '^R' fzf-history-widget
   export FZF_DEFAULT_OPTS="--ansi --info inline"
 
 fi
