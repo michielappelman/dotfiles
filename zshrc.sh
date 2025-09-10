@@ -18,12 +18,12 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt inc_append_history
 
-source $HOME/.dotfiles/plugins/zsh-z/zsh-z.plugin.zsh
 zstyle ':completion:*' menu select
 
-which starship &>/dev/null && eval "$(starship init zsh)"
 which mise &>/dev/null && eval "$(mise activate zsh)"
+which starship &>/dev/null && eval "$(starship init zsh)"
 which direnv &>/dev/null && eval "$(direnv hook zsh)"
+which zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
 if which fzf &>/dev/null
 then
