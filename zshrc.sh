@@ -1,5 +1,6 @@
 # zmodload zsh/zprof
 source ~/.shrc
+source ~/.shprofile
 
 autoload -U compinit && compinit
 
@@ -41,8 +42,8 @@ then
 
   if [[ $LINUX == 1 ]]
   then
-    [[ $- == *i* ]] && source "/usr/share/doc/fzf/examples/completion.zsh" 2> /dev/null
-    source "/usr/share/doc/fzf/examples/key-bindings.zsh"
+    [[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" 2> /dev/null
+    source "/usr/share/fzf/key-bindings.zsh"
   fi
 
   if which fd &>/dev/null
@@ -64,4 +65,3 @@ then
   export FZF_DEFAULT_OPTS="--ansi --info inline"
 
 fi
-

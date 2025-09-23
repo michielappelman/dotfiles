@@ -33,6 +33,7 @@ done
 
 if [ $MACOS ]
 then
+  echo '## masOS installation'
   # Config settings
   source $HOME/.macos
   touch $HOME/.hushlogin
@@ -43,11 +44,5 @@ then
   SS_PLATFORM="apple-darwin"
 elif [ $LINUX ]
 then
-  echo 'Installig starship'
-  SS_PLATFORM="unknown-linux-musl"
-  SS_PKG="$HOME/.starship.tar.gz" 
-  wget --quiet -O "$SS_PKG" "https://github.com/starship/starship/releases/latest/download/starship-x86_64-${SS_PLATFORM}.tar.gz"
-  mkdir -p "$HOME/bin"
-  tar xzf "$SS_PKG" -C "$HOME/bin" && rm "$SS_PKG"
+  echo '## Linux installation'
 fi
-
