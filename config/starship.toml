@@ -1,0 +1,65 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+format = """
+$username\
+$hostname\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$deno\
+$golang\
+$helm\
+$nodejs\
+$opa\
+$python\
+$rust\
+$terraform\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$direnv\
+$env_var\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$shell\
+${custom.iterm_prompt_mark}\
+$character"""
+
+[custom.iterm_prompt_mark]
+when = '[ "$TERM_PROGRAM" = "iTerm.app" ]'
+format = "\u001b\\]133;A\u0007"
+shell = "sh"
+disabled = false
+
+[custom.cloudflare_pop]
+description = "Show Cloudflare POP when in $HOME"
+# command = "curl https://connectivity.cloudflareclient.com/cdn-cgi/trace | grep colo | cut -d= -f2 | tr -d '\n'"
+command = "dig ch txt id.server @1.1.1.1 +short +time=1 | tr -d '\"' | tr -d '\n'"
+when = ''' test "$HOME" = "$PWD" '''
+disabled = true
+
+[gcloud]
+format = 'on [$symbol$account(@$domain)(\($project in $region\))]($style) '
+detect_env_vars = ["SHOW_GCLOUD_PROMPT"]
+[gcloud.region_aliases]
+europe-west1 = "🇪🇺-w1"
+europe-west4 = "🇪🇺-w4"
