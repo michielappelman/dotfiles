@@ -42,8 +42,15 @@ then
 
   if [[ $LINUX == 1 ]]
   then
-    [[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" 2> /dev/null
-    source "/usr/share/fzf/key-bindings.zsh"
+      if command -v fzf &> /dev/null; then
+        alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+        if [[ -f /usr/share/fzf/completion.zsh ]]; then
+          source /usr/share/fzf/completion.zsh
+        fi
+        if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
+          source /usr/share/fzf/key-bindings.zsh
+        fi
+      fi
   fi
 
   if which fd &>/dev/null

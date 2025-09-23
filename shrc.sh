@@ -39,6 +39,20 @@ then
   export EDITOR="vi"
 fi
 
+if quiet_which z
+then
+    alias cd="zd"
+    zd() {
+    if [ $# -eq 0 ]; then
+        builtin cd ~ && return
+    elif [ -d "$1" ]; then
+        builtin cd "$1"
+    else
+        z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+    fi
+    }
+fi
+
 if quiet_which diff-so-fancy
 then
   export GIT_PAGER='diff-so-fancy | less -+$LESS -RX'
@@ -59,6 +73,17 @@ elif [ $LINUX ]
 then
   alias su="/bin/su -"
   alias ls="ls -F --color=auto"
+  open() {
+    xdg-open "$@" >/dev/null 2>&1 &
+  }
+fi
+
+if quiet_which eza
+then
+    alias ls='eza -lh --no-permissions --icons=auto --git'
+    alias lsa='ls -a'
+    alias lt='eza -l --no-permissions --tree --level=2 --icons --git'
+    alias lta='lt -a'
 fi
 
 source ~/.base16-rose-pine-dawn
