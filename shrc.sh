@@ -20,6 +20,11 @@ alias whois-c="whois -h whois.cymru.com"
 alias q="q -s https://cloudflare-dns.com/dns-query -w"
 alias jcurl="curl -H 'Content-Type:application/json'"
 
+## AI Aliases
+alias oc="opencode"
+alias occ="opencode --continue"
+howto() { ollama run cmdhelper "$*"; }
+
 quiet_which() {
   which $1 &>/dev/null
 }
@@ -69,6 +74,9 @@ then
   alias locate="mdfind -name"
   alias cpwd="pwd | tr -d '\n' | pbcopy"
   alias finder-hide="setfile -a V"
+
+  # Cloudflare WARP certs
+  . /Users/michiel/.local/share/cloudflare-warp-certs/config.sh
 elif [ $LINUX ]
 then
   alias su="/bin/su -"
