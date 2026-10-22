@@ -2,47 +2,53 @@
 # Install all dotfiles into the home directory
 # Based on: https://github.com/MikeMcQuaid/dotfiles/blob/master/script/setup
 
-DOTFILESDIRREL=$(dirname $0)
-cd $DOTFILESDIRREL/..
+DOTFILESDIRREL=$(dirname "$0")
+cd "$DOTFILESDIRREL/.." || exit 1
 DOTFILESDIR=$(pwd -P)
 
 mkdir -p "$HOME/.config"
 
-[ $(uname -s) = "Darwin" ] && export MACOS=1 && export UNIX=1
-[ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
+[ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
+[ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
 for DOTFILE in * config/*; do
-  HOMEFILE="$HOME/.$DOTFILE"
-  [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
+  case "$DOTFILE" in
+    LICENSE | config | script | *.txt | *.md) continue ;;
+  esac
+  [ -e "$DOTFILE" ] || continue
+
   DIRFILE="$DOTFILESDIR/$DOTFILE"
+  case "$DOTFILE" in
+    *.sh) HOMEFILE="$HOME/.${DOTFILE%.sh}" ;;
+    *) HOMEFILE="$HOME/.$DOTFILE" ;;
+  esac
 
-  echo $DOTFILE | egrep -q '(^LICENSE$|^config/$|^script/$|\.txt$|\.md$)' && continue
-
-  echo $DOTFILE | grep -q '\.sh' &&
-       HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
-
-  if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]
-  then
-    ln -sfv "$DIRFILE" "$HOMEFILE"
-  else
-    rm -rv "$HOMEFILE"
-    ln -sv "$DIRFILE" "$HOMEFILE"
+  # Move real files/dirs aside instead of deleting them
+  if [ -e "$HOMEFILE" ] && [ ! -L "$HOMEFILE" ]; then
+    BACKUP="$HOMEFILE.bak.$(date +%Y%m%d%H%M%S)"
+    echo "Backing up $HOMEFILE to $BACKUP"
+    mv "$HOMEFILE" "$BACKUP" || exit 1
   fi
+  # -n: replace an existing symlink to a directory instead of linking inside it
+  ln -sfnv "$DIRFILE" "$HOMEFILE"
 done
 
-if [ $MACOS ]
+if [ "$MACOS" = 1 ]
 then
-  echo '## masOS installation'
+  echo '## macOS installation'
   # Config settings
-  source $HOME/.macos
-  touch $HOME/.hushlogin
+  . "$HOME/.macos"
+  touch "$HOME/.hushlogin"
 
-  echo 'Installing brew:'
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  brew bundle install
-  SS_PLATFORM="apple-darwin"
-elif [ $LINUX ]
+  if ! command -v brew >/dev/null 2>&1
+  then
+    echo 'Installing brew:'
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || exit 1
+  fi
+  [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+  brew bundle install --file="$DOTFILESDIR/Brewfile"
+elif [ "$LINUX" = 1 ]
 then
   echo '## Linux installation'
 fi

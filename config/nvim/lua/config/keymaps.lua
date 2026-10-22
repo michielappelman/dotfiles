@@ -1,9 +1,7 @@
 local opts = { noremap = true, silent = true }
 
--- Remap space as leader key
+-- Remap space as leader key (mapleader is set in init.lua)
 vim.keymap.set("", "<Space>", "<Nop>")
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 vim.keymap.set("n", "<c-left>", "<C-W><C-H>")
 vim.keymap.set("n", "<c-down>", "<C-W><C-J>")
@@ -33,7 +31,7 @@ vim.keymap.set("i", ":", ":<c-g>u")
 vim.keymap.set("i", "<cr>", "<cr><c-g>u")
 
 -- Function Keys Mapping
-vim.keymap.set("", "<F2>", [[<Esc>:NvimTreeToggle<CR>]])
+vim.keymap.set("", "<F2>", [[<Esc>:Neotree toggle<CR>]])
 vim.keymap.set("", "<F5>", [[:Telescope<CR>]])
 
 -- Ctrl+s is binded to save file
@@ -43,9 +41,7 @@ vim.keymap.set("v", "<C-s>", [[<Esc>:w<CR>]])
 
 -- Buffer/Tab navigation
 vim.keymap.set("n", "<C-q>", ":close<CR>")
-vim.keymap.set("n", "\\b", ":BufferPick<CR>")
-vim.keymap.set("n", "[b", ":BufferPrevious<CR>")
-vim.keymap.set("n", "]b", ":BufferNext<CR>")
+vim.keymap.set("n", "\\b", ":BufferLinePick<CR>")
 
 -- Telescope Mappings
 vim.keymap.set("n", "<leader><space>", [[<cmd>lua require('telescope.builtin').buffers()<CR>]])

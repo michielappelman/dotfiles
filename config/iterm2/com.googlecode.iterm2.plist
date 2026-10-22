@@ -2,8 +2,46 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AI Prompt</key>
+	<string>You are a CLI command lookup tool. The user describes what they want to do. Respond with ONLY the exact command to run on a macOS device.
+
+Rules:
+- Output the raw command text and nothing else.
+- Do NOT wrap the command in backticks (`), single quotes, double quotes, or Markdown code fences (```).
+- Do NOT include any explanation, commentary, labels, or trailing punctuation.
+- The first character of your response must be the first character of the command, and the last character must be the last character of the command.
+
+Return a command suitable for copy/pasting into \(shell) on \(uname).
+
+It must do this: \(ai.prompt)</string>
+	<key>AIFeatureFunctionCalling</key>
+	<false/>
+	<key>AIFeatureHostedCodeInterpeter</key>
+	<false/>
+	<key>AIFeatureHostedFileSearch</key>
+	<false/>
+	<key>AIFeatureHostedWebSearch</key>
+	<false/>
+	<key>AIFeatureStreamingResponses</key>
+	<false/>
+	<key>AIPermissionRunCommands</key>
+	<integer>0</integer>
+	<key>AITermAPI</key>
+	<integer>5</integer>
+	<key>AIVectorStore</key>
+	<integer>0</integer>
+	<key>AIVendor</key>
+	<integer>3</integer>
 	<key>AdjustWindowForFontSizeChange</key>
 	<false/>
+	<key>AiMaxTokens</key>
+	<integer>1050000</integer>
+	<key>AiModel</key>
+	<string>qwen2.5-coder:3b</string>
+	<key>AiResponseMaxTokens</key>
+	<integer>128000</integer>
+	<key>AitermURL</key>
+	<string>http://127.0.0.1:11434/api/chat</string>
 	<key>AllowClipboardAccess</key>
 	<true/>
 	<key>AlternateMouseScroll</key>
@@ -3455,14 +3493,16 @@
 			<true/>
 			<key>Background Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.92941176470588238</real>
+				<real>0.97828071305841924</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.95686274509803926</real>
+				<real>0.98997571563431586</real>
 				<key>Red Component</key>
-				<real>0.98039215686274506</real>
+				<real>1</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -4110,6 +4150,8 @@
 	</array>
 	<key>UseBorder</key>
 	<false/>
+	<key>UseRecommendedAIModel</key>
+	<false/>
 	<key>UseTmuxStatusBar</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
@@ -4121,7 +4163,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewPreferredModeKey</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
 	<false/>
 	<key>metalMaximizeThroughput</key>

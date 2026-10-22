@@ -1,21 +1,5 @@
 #!/usr/bin/env bash
 
-# Symlinks to Documents folder
-dirs=("Music" "Movies" "Pictures" "sources" "sources/bin")
-for dir in "${dirs[@]}"; do
-  LINKDIR="$HOME/Documents/$dir"
-  DIRNAME="$(echo $dir | awk -F '/' '{print $NF}')"
-  HOMEDIR="$HOME/$DIRNAME"
-
-  if [ -L "$HOMEDIR" ] || ! [ -e "$HOMEDIR" ]
-  then
-    rm -rv "$HOMEDIR"
-    ln -sv "$LINKDIR" "$HOMEDIR"
-  else
-    echo "WARN: $HOMEDIR exists but is not a link"
-  fi
-done
-
 # General Settings
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 defaults write NSGlobalDomain AppleSpacesSwitchOnActivate -bool true
