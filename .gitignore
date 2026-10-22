@@ -1,3 +1,5 @@
 config/nvim/plugin
 config/karabiner/automatic_backups
 config/iterm2/AppSupport
+config/herdr/*
+!config/herdr/config.toml
